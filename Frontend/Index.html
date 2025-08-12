@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <a href="home.html" class="nav-item">Home</a>
+        <a href="ckcb.html" class="nav-item play-btn">Play Now</a>
+        <a href="login.html" class="nav-item">Login</a>
+        <a href="register.html" class="nav-item">Register</a>
+        <a href="profile.html" class="nav-item">Leaderboard</a>
+    </div>
+
+    <!-- Chess Content Section -->
+<div class="chess-container">
+    <h1 class="title">Welcome to ChessKings </h1> <!-- Title outside the form-box, now absolutely positioned -->
+    <div class="chess-content">
+        <!-- Chess Board Image -->
+        <div class="index-board">
+                <a href="ckcb.html" class="index-guest-board-link">
+                    <img alt="Board" class="index-board-img" width="496" height="496" src="https://www.chess.com/bundles/web/images/offline-play/standardboard.1d6f9426.png">
+                </a>
+            </form>
+        </div>
+ <!-- Buttons Wrapper (Stacked vertically on the right) -->
+        <div class="buttons-wrapper">
+<!-- Lessons Button -->
+        <form action="lessons.html" method="post" class="lessons-button-wrapper">
+                <button type="button" class="btn lessons-btn" onclick="window.location.href='lessons.html';">Lessons</button>
+        </form>
+
+            <!-- Puzzles Button -->
+        <form action="puzzles.html" method="post" class="lessons-button-wrapper">
+                <button type="button" class="btn lessons-btn" onclick="window.location.href='puzzles.html';">Puzzles</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+<script src="home.js"></script>
+</body>
+</html>

@@ -1,304 +1,45 @@
 <html>
 <head>
-    <title>ChessKings</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/FreePalestine7/IT490-Project@main/chessboard.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="ckcb.css">
+  <title>ChessKings</title>
+  <!-- libs: chess.js + chessboard.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/1.0.0/chess.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js" defer></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="ckcb.css">
 </head>
-<body ng-app="myApp">
-    <!-- Define AngularJS Module -->
-    <script>
-        angular.module('myApp', []);
-    </script>
-
-    <div class="top-nav">
-        <a href="home.html" class="nav-item">Home</a>
-        <a href="ckcb.html" class="nav-item play-btn">Play Now</a>
-        <a href="login.html" class="nav-item">Login</a>
-        <a href="register.html" class="nav-item">Register</a>
-        <a href="profile.html" class="nav-item">Leaderboard</a>
+<body>
+  <div class="option-nav">
+    <div id="player-nav">
+      <div id="turn-indicator">
+        Current Turn: <span id="current-turn">White</span>
+      </div>
+      <div id="player">You: <span id="player-id">—</span> | Role: <span id="role">?</span> | Game: <span id="game-id">—</span></div>
     </div>
+    <div id="option" class="btn"><i class="fa fa-cog" aria-hidden="true"></i><span class="tooltiptext">OPTION</span></div>
+    <div id="undo-btn" class="btn"><i class="fa fa-undo" aria-hidden="true"></i><span class="tooltiptext">RESET</span></div>
+  </div>
 
-    <div class="option-nav">
-        <div id="player-nav">
-            <div id="turn-indicator">
-                Current Turn: <span id="current-turn">White</span>
-            </div>
-        </div>
-        <div id="option" class="btn">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-            <span class="tooltiptext">OPTION</span>
-        </div>
-        <div id="undo-btn" class="btn">
-            <i class="fa fa-undo" aria-hidden="true"></i>
-            <span class="tooltiptext">RESET</span>
-        </div>
+  <div id="game-wrapper">
+    <div id="board"></div>
+
+    <div id="chatbox">
+      <h2>Chat</h2>
+      <div id="messages"></div>
+      <div id="chat-input">
+        <input type="text" id="chat-text" placeholder="Type your message..." />
+        <button id="chat-send">Send</button>
+      </div>
     </div>
+  </div>
 
-    <div id="game-wrapper" ng-controller="GameController">
-        <div id="board" ng-click="handleSquareClick($event.target.dataset.square)"></div><div id="chatbox">
-            <h2>Chat</h2>
-            <div id="messages">
-                <div class="message" ng-repeat="msg in chatMessages">{{msg}}</div>
-            </div>
-            <div id="chat-input">
-                <input type="text" ng-model="newMessage" placeholder="Type your message..." />
-                <button ng-click="sendMessage()">Send</button>
-            </div>
-        </div>
-    </div>
+  <div id="matchmaking-section">
+    <button id="join-matchmaking-btn" aria-label="Join Matchmaking">Join Matchmaking</button>
+    <p id="matchmaking-status">Idle</p>
+    <div id="loading-spinner" style="display:none">Finding a match...</div>
+  </div>
 
-    <div id="matchmaking-section" ng-controller="GameController" ng-cloak>
-        <button id="join-matchmaking-btn" ng-click="joinMatchmaking()" ng-disabled="loadingSpinnerVisible" aria-label="Join Matchmaking">
-            Join Matchmaking
-        </button>
-        <p id="matchmaking-status">{{matchmakingStatus}}</p>
-        <div id="loading-spinner" ng-show="loadingSpinnerVisible">Finding a match...</div>
-    </div>
-    <script>
-        angular.module('myApp').controller('GameController', function ($scope, $http, $interval) {
-            $scope.currentPlayerId = null;
-            $scope.matchmakingStatus = "Idle";
-            $scope.loadingSpinnerVisible = false;
-            $scope.polling = null;
-            $scope.gameId = null;
-            $scope.playerRole = null;
-            $scope.retryLimit = 5; // Limit retries for polling
-
-            // Initialize chessboard and chess.js
-            const chess = new Chess();
-            const board = Chessboard('board', {
-                position: 'start',
-                animate: true,
-                pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png'
-            });
-
-            // Suppress chessboard.js animation errors
-            const originalPosition = Chessboard.prototype.position;
-            Chessboard.prototype.position = function (fen, animate) {
-                try {
-                    originalPosition.call(this, fen, animate);
-                } catch (e) {
-                    if (e.message.includes("Cannot read properties of undefined")) { console.warn("Suppressed chessboard.js animation error:", e.message);
-                    } else {
-                        throw e;
-                    }
-                }
-            };
-
-            // Function to update turn indicator
-            $scope.updateTurn = function () {
-                const turn = chess.turn() === 'w' ? 'White' : 'Black';
-                const turnElement = document.getElementById('current-turn');
-                if (turnElement) {
-                    turnElement.textContent = turn;
-                    turnElement.className = turn.toLowerCase();
-                }
-                console.log('Current turn:', turn);
-            };
-
-            // Poll moves from the backend
-            $scope.pollMoves = function () {
-                if ($scope.gameId === null || $scope.gameId === undefined || !$scope.currentPlayerId) {
-                    console.warn("Cannot poll moves without valid gameId or playerId.");
-                    return;
-                }
-
-                fetch('pollMoves.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ gameId: $scope.gameId, playerId: $scope.currentPlayerId })
-                })
-                    .then(response => {
-                        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.status === 'success' && data.move) {
-                            chess.move(data.move);
-                            board.position(chess.fen());
-                            $scope.updateTurn();
-                        } else if (data.status === 'waiting') {
-                            console.log("No move yet, retrying...");
-                        } else {
-                            console.error("Unexpected response:", data);
-                        } $scope.pollMoves(); // Reinitiate polling
-                    })
-                    .catch(error => {
-                        console.error("Error polling moves:", error);
-                        setTimeout(() => $scope.pollMoves(), 5000);
-                    });
-            };
-
-            // Start the game and initialize the game board
-            $scope.startGame = function (gameData) {
-                if (!gameData || typeof gameData.gameId !== 'number' || !gameData.roles) {
-                    console.error("Error starting game: Missing or invalid gameId or roles.", gameData);
-                    alert("Error starting game: Missing required information.");
-                    return;
-                }
-
-                $scope.gameId = gameData.gameId;
-                $scope.playerRole = gameData.roles[$scope.currentPlayerId];
-
-                console.log("Game started with ID:", $scope.gameId);
-                console.log("Player role:", $scope.playerRole);
-
-                chess.reset();
-                board.position('start');
-                $scope.updateTurn();
-
-                if ($scope.playerRole === 'white') {
-                    alert('You are playing as White. Your turn!');
-                } else {
-                    alert('You are playing as Black. Waiting for White to move.');
-                }
-
-                $scope.pollMoves();
-            };
-
-
-            // Send a move to the backend
-            $scope.sendMove = function (move) {
-                if ($scope.gameId === null || $scope.gameId === undefined || !$scope.currentPlayerId || !move) {
-                    console.error("Missing gameId, playerId, or move.", {
-                        gameId: $scope.gameId,
-                        playerId: $scope.currentPlayerId,
-                        move: move
-                    });alert("Unable to send move: Missing required information.");
-                    return;
-                }
-
-                fetch('sendMove.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ gameId: $scope.gameId, playerId: $scope.currentPlayerId, move })
-                })
-                    .then(response => {
-                        if (!response.ok) throw new Error(`HTTP error ${response.status}`);
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.status === 'success') {
-                            console.log("Move sent successfully:", data);
-                        } else {
-                            console.error("Error sending move:", data.error);
-                            alert(`Error: ${data.error || "Failed to send move."}`);
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Error sending move:", error);
-                        alert("Failed to send move. Please try again.");
-                    });
-            };
-
-            // Join matchmaking
-            $scope.joinMatchmaking = function () {
-                if (!$scope.currentPlayerId) {
-                    alert("You must log in to join matchmaking.");
-                    return;
-                }
-
-                $scope.matchmakingStatus = "Joining matchmaking...";
-                $scope.loadingSpinnerVisible = true;
-
-                $http.post('matchmaking.php', { playerId: $scope.currentPlayerId })
-                    .then(response => {
-                        console.log("Matchmaking request sent:", response.data);
-                        if (response.data.status === 'success') {
-                            $scope.matchmakingStatus = "Waiting for a match...";
-                            $scope.listenForGameUpdates();
-                        } else { $scope.matchmakingStatus = response.data.error || "Failed to join matchmaking.";
-                        }
-                    })
-                    .catch(error => {
-                        console.error("Matchmaking error:", error);
-                        $scope.matchmakingStatus = "Failed to join matchmaking. Try again.";
-                    })
-                    .finally(() => {
-                        $scope.loadingSpinnerVisible = false;
-                    });
-            };
-
-            // Listen for matchmaking updates
-            $scope.listenForGameUpdates = function () {
-                let retryCount = 0;
-
-                $scope.polling = $interval(() => {
-                    $http.get(`getmmstatus.php?playerId=${$scope.currentPlayerId}`)
-                        .then(response => {
-                            console.log("Matchmaking status response:", response.data);
-
-                            if (response.data.status === 'success' && typeof response.data.gameId === 'number' && response.data.roles) {
-                                $scope.matchmakingStatus = 'Match found! Starting game...';
-                                $scope.startGame({ gameId: response.data.gameId, roles: response.data.roles });
-                                $interval.cancel($scope.polling);
-                            } else if (response.data.status === 'waiting') {
-                                console.log("Still waiting for a match...");
-                            } else {
-                                console.error("Unexpected response:", response.data);
-                                $scope.matchmakingStatus = response.data.error || "Unexpected matchmaking error.";
-                                $interval.cancel($scope.polling);
-                            }
-                        })
-                        .catch(error => {
-                            retryCount++;
-                            console.error(`Polling error (retry ${retryCount}):`, error);
-                            if (retryCount > $scope.retryLimit) {
-                                $scope.matchmakingStatus = "Matchmaking failed. Please try again.";
-                                $interval.cancel($scope.polling);
-                            }
-                        });
-                }, 2000);
-            };
- // Fetch the current user's ID
-            $http.get('getuserid.php', { withCredentials: true })
-                .then(response => {
-                    if (response.data.user_id) {
-                        $scope.currentPlayerId = response.data.user_id;
-                        console.log("Current Player ID:", $scope.currentPlayerId);
-                    } else {
-                        alert("You must log in to play.");
-                        window.location.href = "login.html";
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching user ID:", error);
-                    alert("Error: You are not logged in.");
-                    window.location.href = "login.html";
-                });
-
-            // Chessboard click handler
-            $('#board').on('click', '.square-55d63', function () {
-                const square = $(this).data('square');
-                if (!$scope.selectedSquare) {
-                    const piece = chess.get(square);
-                    if (piece) {
-                        $scope.selectedSquare = square;
-                        console.log("Piece selected:", piece);
-                    } else {
-                        console.warn("No piece at the selected square.");
-                    }
-                } else {
-                    const move = chess.move({ from: $scope.selectedSquare, to: square, promotion: 'q' });
-                    if (move) {
-                        board.position(chess.fen());
-                        $scope.selectedSquare = null;
-                        $scope.$apply(() => {
-                            $scope.updateTurn();
-                            $scope.sendMove(move);
-                        });
-                    } else {
-                        console.warn("Invalid move. Try again.");
-                        $scope.selectedSquare = null;
-                    }
-                }
-            });
-        });
-    </script>
+  <!-- App code (ES modules) -->
+  <script type="module" src="/js/main.js"></script>
 </body>
 </html>

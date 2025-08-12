@@ -1,0 +1,6 @@
+{
+  "routes": [
+    { "src": "/", "dest": "/Frontend/ckcb.html" },
+    { "src": "/(.*)", "dest": "/Frontend/$1" }
+  ]
+}

@@ -22,8 +22,6 @@ async function boot(){
 
   // Token field & button wiring (simple demo)
   const joinBtn = document.getElementById('join-matchmaking-btn');
-  const resetBtn = document.getElementById('undo-btn');
-  resetBtn.addEventListener('click', resetBoard);
 
   joinBtn.addEventListener('click', async ()=>{
     const token = HARDCODED_TOKEN;

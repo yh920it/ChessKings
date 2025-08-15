@@ -5,6 +5,7 @@ import { initChat, setChatContext, handleIncomingChat } from './chat.js';
 
 // === Configure your Lichess token here (or inject via server-side templating) ===
 const HARDCODED_TOKEN = "lip_ASrrkqtFdP08Cobo1Oyh";
+const TOKEN = HARDCODED_TOKEN.trim();
 
 function uciFromSAN(chess, san){
   return san;
@@ -24,7 +25,7 @@ async function boot(){
   const joinBtn = document.getElementById('join-matchmaking-btn');
 
   joinBtn.addEventListener('click', async ()=>{
-    const token = HARDCODED_TOKEN;
+    const token = TOKEN;
 
     const mm = await joinMatchmaking({ token, rated:false, time:5, increment:0, color:'random' });
     const { gameId, myName } = mm;
@@ -61,4 +62,3 @@ window.addEventListener('DOMContentLoaded', ()=>{
   document.body.appendChild(div);
   boot();
 });
-

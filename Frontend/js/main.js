@@ -4,7 +4,7 @@ import { joinMatchmaking } from './matchmaking.js';
 import { initChat, setChatContext, handleIncomingChat } from './chat.js';
 
 // === Configure your Lichess token here (or inject via server-side templating) ===
-const HARDCODED_TOKEN = "lip_ASrrkqtFdP08Cobo1Oyh";
+const HARDCODED_TOKEN = "lip_A5Z4c4R5KmyVvFfC2CEK";
 const TOKEN = HARDCODED_TOKEN.trim();
 
 function uciFromSAN(chess, san){

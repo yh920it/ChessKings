@@ -1,88 +1,54 @@
 import { API, delay } from './api.js';
 
 // Join the public lobby using a Lichess seek, then wait for a gameStart event.
-// Defaults to 5+0 and times out if nothing happens soon.
-export async function joinMatchmaking({
-  token,
-  rated = false,
-  time = 5,
-  increment = 0,
-  color = 'random',
-  timeoutMs = 90_000 // 90s timeout so you don’t hang forever
-}) {
+export async function joinMatchmaking({ token, rated=false, time=5, increment=0, color='random', timeoutMs=90000 }){
   const status = document.getElementById('matchmaking-status');
   const spinner = document.getElementById('loading-spinner');
+  status.textContent = 'Joining Lichess lobby…'; spinner.style.display = '';
 
-  status.textContent = 'Opening event stream…';
-  spinner.style.display = '';
+  // Who am I?
+  const acct = await API.getAccount(token); // { username }
+  const myName = acct.username;
 
-  // Start listening BEFORE posting the seek so we don’t miss gameStart
-  let resolveMM;
-  let rejectMM;
-  const mmPromise = new Promise((res, rej) => {
-    resolveMM = res;
-    rejectMM = rej;
-  });
+  // Listen for events BEFORE creating the seek.
+  let resolveStart, rejectStart;
+  const mmPromise = new Promise((res, rej)=>{ resolveStart = res; rejectStart = rej; });
 
+  const controller = new AbortController();  // lets us cancel the seek if we time out
   let timedOut = false;
-  const to = setTimeout(() => {
-    timedOut = true;
-    rejectMM(new Error('No match found within the timeout window.'));
-  }, timeoutMs);
 
-  API.streamEvents(token, (evt) => {
-    if (evt.type === 'gameStart' && evt.game?.id && !timedOut) {
-      clearTimeout(to);
-      resolveMM({ gameId: evt.game.id });
+  API.streamEvents(token, evt => {
+    if (evt.type === 'gameStart' && evt.game && evt.game.id){
+      resolveStart({ gameId: evt.game.id, myName, abortSeek: ()=>controller.abort() });
     }
-  }).catch((err) => {
-    // Don’t reject immediately; the seek might still succeed via another stream
-    console.warn('Event stream ended', err);
-  });
+  }).catch(err=>console.warn('event stream ended', err));
 
-  // Now create the seek
-  status.textContent = `Posting seek (${time}+${increment})…`;
-
+  // Fire the seek (keep the request open)
+  let seekResp;
   try {
-    // Lichess rejects invalid combos with 400. Keep time in [0..180], increment [0..60].
-    const t = Number(time);
-    const inc = Number(increment);
-    if (
-      !Number.isFinite(t) ||
-      !Number.isFinite(inc) ||
-      t < 0 ||
-      t > 180 ||
-      inc < 0 ||
-      inc > 60
-    ) {
-      throw new Error('Invalid time control values.');
-    }
-
-    await API.createSeek(token, {
-      rated: !!rated,
-      time: t,
-      increment: inc,
-      color
-    });
+    seekResp = await API.createSeek(token, { rated, time, increment, color });
   } catch (e) {
-    clearTimeout(to);
-    const msg =
-      (e?.server && e.server.error?.global?.[0]) ||
-      (e?.server && e.server.global?.[0]) ||
-      e?.message ||
-      'Seek failed.';
-    const friendly =
-      /Invalid time control/i.test(msg)
-        ? 'Seek failed. Check that time/increment are valid (e.g., 5+0, 3+2).'
-        : msg;
-
-    status.textContent = friendly;
     spinner.style.display = 'none';
-    throw new Error(friendly);
+    status.textContent = 'Idle';
+    throw new Error('Seek failed. Check that time/increment are valid (e.g., 5+0) and your token has challenge:write.');
   }
 
-  status.textContent = 'Waiting for an opponent…';
-  return mmPromise.finally(() => {
-    spinner.style.display = 'none';
-  });
+  // Timeout if nobody pairs us in time; abort the seek request
+  (async () => {
+    await delay(timeoutMs);
+    timedOut = true;
+    try { controller.abort(); } catch {}
+    rejectStart(new Error('No match found within the timeout window.'));
+  })();
+
+  // Keep the connection open until we get paired (or timeout)
+  try {
+    await seekResp.body?.getReader().read(); // hold the connection
+  } catch {} // aborted on match or timeout
+
+  const started = await mmPromise;
+  if (timedOut) throw new Error('No match found within the timeout window.');
+
+  status.textContent = 'Match found!'; spinner.style.display = 'none';
+  return started; // { gameId, myName, abortSeek }
 }

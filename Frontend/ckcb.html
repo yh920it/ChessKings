@@ -30,11 +30,26 @@
     </div>
   </div>
 
-  <div id="matchmaking-section">
-    <button id="join-matchmaking-btn" aria-label="Join Matchmaking">Join Matchmaking</button>
-    <p id="matchmaking-status">Idle</p>
-    <div id="loading-spinner" style="display:none">Finding a match...</div>
+<div id="matchmaking-section">
+  <div style="margin-bottom:10px;">
+    <input
+      id="li-token"
+      type="password"
+      placeholder="Paste Lichess token"
+      autocomplete="off"
+      style="width:320px;padding:8px;border:1px solid #ccc;border-radius:4px"
+    />
+    <label style="margin-left:8px;font-size:14px;">
+      <input id="remember-token" type="checkbox" />
+      remember on this browser
+    </label>
   </div>
+
+  <button id="join-matchmaking-btn" aria-label="Join Matchmaking">Play</button>
+  <p id="matchmaking-status">Idle</p>
+  <div id="loading-spinner" style="display:none">Finding a match...</div>
+</div>
+
 
   <!-- Load app entry -->
   <script type="module" src="./js/main.js"></script>

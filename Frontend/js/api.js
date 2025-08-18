@@ -1,86 +1,142 @@
+// api.js
 // Lichess-first API layer for real-time play via official endpoints.
-// Requires a Lichess OAuth token with scope: "board:play" (and optional "challenge:write" for seeks; 
-// chat uses board scope). Docs: https://lichess.org/api
+// Token: Personal Access Token with "board:play" (plus "challenge:write" for seeks, "msg:write" for chat).
+// Docs: https://lichess.org/api
 
 const LICHESS = 'https://lichess.org';
+const TOKEN_KEY = 'lichessToken';
 
-const jsonHeaders = (token) => ({
-  'Authorization': `Bearer ${token}`,
-  'Accept': 'application/json'
-});
+// --- Token helpers -----------------------------------------------------------
+export function saveToken(t) { localStorage.setItem(TOKEN_KEY, (t || '').trim()); }
+export function loadToken()  { return (localStorage.getItem(TOKEN_KEY) || '').trim(); }
 
-const ndjsonHeaders = (token) => ({
-  'Authorization': `Bearer ${token}`,
-  'Accept': 'application/x-ndjson'
-});
+/** Resolve token precedence: explicit arg → localStorage → #li-token input */
+function resolveToken(explicit) {
+  const t = (explicit || '').trim() || loadToken() ||
+            (document.getElementById('li-token')?.value || '').trim();
+  return t;
+}
 
-const formHeaders = (token) => ({
-  'Authorization': `Bearer ${token}`,
-  'Content-Type': 'application/x-www-form-urlencoded'
-});
+function requireToken(explicit) {
+  const t = resolveToken(explicit);
+  if (!t) throw new Error('No Lichess token. Paste one in the input or save to localStorage.');
+  return t;
+}
 
-// Utility: read NDJSON stream line-by-line
-async function readNDJSON(stream, onLine){
+// --- Headers -----------------------------------------------------------------
+function jsonHeaders(token)  { return { Authorization: `Bearer ${token}`, Accept: 'application/json' }; }
+function ndjsonHeaders(token){ return { Authorization: `Bearer ${token}`, Accept: 'application/x-ndjson' }; }
+function formHeaders(token)  { return { Authorization: `Bearer ${token}`, 'Content-Type': 'application/x-www-form-urlencoded' }; }
+
+// --- NDJSON reader -----------------------------------------------------------
+async function readNDJSON(stream, onLine) {
   const reader = stream.getReader();
   const decoder = new TextDecoder();
   let buf = '';
-  for(;;){
+  for (;;) {
     const { value, done } = await reader.read();
     if (done) break;
-    buf += decoder.decode(value, { stream:true });
+    buf += decoder.decode(value, { stream: true });
     let idx;
-    while ((idx = buf.indexOf('\n')) >= 0){
+    while ((idx = buf.indexOf('\n')) >= 0) {
       const line = buf.slice(0, idx).trim();
       buf = buf.slice(idx + 1);
       if (!line) continue;
-      try { onLine(JSON.parse(line)); } catch { /* ignore */ }
+      try { onLine(JSON.parse(line)); } catch { /* ignore malformed line */ }
     }
   }
 }
 
+// --- API ---------------------------------------------------------------------
 export const API = {
   // Identify current account (to detect our color when a game starts)
-  getAccount: async (token) => {
-    const r = await fetch(`${LICHESS}/api/account`, { headers: jsonHeaders(token), credentials: 'omit' });
-    if (!r.ok) throw new Error('account');
+  getAccount: async (tokenMaybe) => {
+    const token = requireToken(tokenMaybe);
+    const r = await fetch(`${LICHESS}/api/account`, {
+      headers: jsonHeaders(token),
+      credentials: 'omit'
+    });
+    if (!r.ok) {
+      const body = await r.text().catch(()=> '');
+      throw new Error(`account ${r.status} – ${body.slice(0,200) || 'no body'}`);
+    }
     return r.json();
   },
+
   // Stream account events (challenges, gameStart, gameFinish)
-  streamEvents: async (token, onEvent) => {
+  streamEvents: async (tokenMaybe, onEvent) => {
+    const token = requireToken(tokenMaybe);
     const r = await fetch(`${LICHESS}/api/stream/event`, { headers: ndjsonHeaders(token) });
-    if (!r.ok) throw new Error('stream events');
+    if (!r.ok) {
+      const body = await r.text().catch(()=> '');
+      throw new Error(`stream events ${r.status} – ${body.slice(0,200) || 'no body'}`);
+    }
     return readNDJSON(r.body, onEvent);
   },
+
   // Create a public seek (matchmaking in the lichess lobby)
   // opts: rated:boolean, time:int, increment:int, variant:string ('standard'), color:'random'|'white'|'black'
-  createSeek: async (token, opts={}) => {
+  createSeek: async (tokenMaybe, opts = {}) => {
+    const token = requireToken(tokenMaybe);
     const params = new URLSearchParams({
-      rated: String(!!opts.rated), time: String(opts.time ?? 5), increment: String(opts.increment ?? 0),
-      variant: opts.variant ?? 'standard', color: opts.color ?? 'random'
+      rated: String(!!opts.rated),
+      time: String(opts.time ?? 5),          // default 5 minutes
+      increment: String(opts.increment ?? 0),// default 0 increment
+      variant: opts.variant ?? 'standard',
+      color: opts.color ?? 'random'
     });
-    const r = await fetch(`${LICHESS}/api/board/seek`, { method:'POST', headers: formHeaders(token), body: params });
-    if (!r.ok) throw new Error('seek');
+    const r = await fetch(`${LICHESS}/api/board/seek`, {
+      method: 'POST',
+      headers: formHeaders(token),
+      body: params
+    });
+    if (!r.ok) {
+      const body = await r.text().catch(()=> '');
+      throw new Error(`seek ${r.status} – ${body.slice(0,200) || 'no body'}`);
+    }
     return true;
   },
+
   // Stream a game (real-time moves, chat lines, clocks)
-  streamGame: async (token, gameId, onLine) => {
+  streamGame: async (tokenMaybe, gameId, onLine) => {
+    const token = requireToken(tokenMaybe);
     const r = await fetch(`${LICHESS}/api/board/game/stream/${gameId}`, { headers: ndjsonHeaders(token) });
-    if (!r.ok) throw new Error('stream game');
+    if (!r.ok) {
+      const body = await r.text().catch(()=> '');
+      throw new Error(`stream game ${r.status} – ${body.slice(0,200) || 'no body'}`);
+    }
     return readNDJSON(r.body, onLine);
   },
+
   // Make a move (UCI like 'e2e4' or 'e7e8q')
-  makeMove: async (token, gameId, uci) => {
-    const r = await fetch(`${LICHESS}/api/board/game/${gameId}/move/${uci}`, { method:'POST', headers: jsonHeaders(token) });
-    if (!r.ok) throw new Error('move');
-    return r.json().catch(()=>({ ok:true }));
+  makeMove: async (tokenMaybe, gameId, uci) => {
+    const token = requireToken(tokenMaybe);
+    const r = await fetch(`${LICHESS}/api/board/game/${gameId}/move/${uci}`, {
+      method: 'POST',
+      headers: jsonHeaders(token)
+    });
+    if (!r.ok) {
+      const body = await r.text().catch(()=> '');
+      throw new Error(`move ${r.status} – ${body.slice(0,200) || 'no body'}`);
+    }
+    return r.json().catch(() => ({ ok: true }));
   },
+
   // Send game chat (room: 'player' or 'spectator')
-  postChat: async (token, gameId, text, room='player') => {
+  postChat: async (tokenMaybe, gameId, text, room = 'player') => {
+    const token = requireToken(tokenMaybe);
     const body = new URLSearchParams({ room, text });
-    const r = await fetch(`${LICHESS}/api/board/game/${gameId}/chat`, { method:'POST', headers: formHeaders(token), body });
-    if (!r.ok) throw new Error('chat');
+    const r = await fetch(`${LICHESS}/api/board/game/${gameId}/chat`, {
+      method: 'POST',
+      headers: formHeaders(token),
+      body
+    });
+    if (!r.ok) {
+      const resp = await r.text().catch(()=> '');
+      throw new Error(`chat ${r.status} – ${resp.slice(0,200) || 'no body'}`);
+    }
     return true;
   }
 };
 
-export const delay = (ms) => new Promise(res=>setTimeout(res, ms));
+export const delay = (ms) => new Promise(res => setTimeout(res, ms));

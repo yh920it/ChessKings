@@ -1,54 +1,62 @@
-import { API, delay } from './api.js';
+// ./js/matchmaking.js
+import { API } from './api.js';
 
 // Join the public lobby using a Lichess seek, then wait for a gameStart event.
-export async function joinMatchmaking({ token, rated=false, time=5, increment=0, color='random', timeoutMs=90000 }){
-  const status = document.getElementById('matchmaking-status');
+// Usage: await joinMatchmaking({ token, rated:false, time:5, increment:0, color:'random', timeoutMs:90000 })
+export async function joinMatchmaking({
+  token,
+  rated = false,
+  time = 5,          // minutes
+  increment = 0,     // seconds
+  color = 'random',  // 'random' | 'white' | 'black'
+  timeoutMs = 90_000
+}) {
+  const status  = document.getElementById('matchmaking-status');
   const spinner = document.getElementById('loading-spinner');
-  status.textContent = 'Joining Lichess lobby…'; spinner.style.display = '';
 
-  // Who am I?
-  const acct = await API.getAccount(token); // { username }
-  const myName = acct.username;
+  // UI: starting
+  status.textContent = 'Joining Lichess lobby…';
+  spinner.style.display = '';
 
-  // Listen for events BEFORE creating the seek.
+  // 0) Verify token & grab username (early fail if scope is wrong)
+  const acct = await API.me(token);        // throws if invalid/missing board:play
+  const myName = acct.username || 'You';
+
+  // 1) Open the global event stream FIRST so we don't miss gameStart
   let resolveStart, rejectStart;
-  const mmPromise = new Promise((res, rej)=>{ resolveStart = res; rejectStart = rej; });
+  const startedP = new Promise((res, rej) => { resolveStart = res; rejectStart = rej; });
 
-  const controller = new AbortController();  // lets us cancel the seek if we time out
-  let timedOut = false;
-
-  API.streamEvents(token, evt => {
-    if (evt.type === 'gameStart' && evt.game && evt.game.id){
-      resolveStart({ gameId: evt.game.id, myName, abortSeek: ()=>controller.abort() });
+  const es = API.openEventStream(token, (evt) => {
+    if (evt?.type === 'gameStart' && evt.game?.id) {
+      // Found a match
+      try { es.close(); } catch {}
+      resolveStart({ gameId: evt.game.id, myName });
     }
-  }).catch(err=>console.warn('event stream ended', err));
+  });
 
-  // Fire the seek (keep the request open)
-  let seekResp;
+  // 2) Place the seek (form-encoded minutes + seconds)
   try {
-    seekResp = await API.createSeek(token, { rated, time, increment, color });
+    await API.createSeek(token, { rated, time, increment, color });
   } catch (e) {
     spinner.style.display = 'none';
     status.textContent = 'Idle';
-    throw new Error('Seek failed. Check that time/increment are valid (e.g., 5+0) and your token has challenge:write.');
+    // Match your old error text, but corrected for board:play
+    throw new Error('Seek failed. Check that time/increment are valid (e.g., 5+0) and your token has board:play.');
   }
 
-  // Timeout if nobody pairs us in time; abort the seek request
-  (async () => {
-    await delay(timeoutMs);
-    timedOut = true;
-    try { controller.abort(); } catch {}
+  // 3) Timeout guard (seeks auto-expire server-side)
+  const t = setTimeout(() => {
+    try { es.close(); } catch {}
     rejectStart(new Error('No match found within the timeout window.'));
-  })();
+  }, timeoutMs);
 
-  // Keep the connection open until we get paired (or timeout)
-  try {
-    await seekResp.body?.getReader().read(); // hold the connection
-  } catch {} // aborted on match or timeout
+  // 4) Wait for gameStart or timeout
+  const started = await startedP.finally(() => clearTimeout(t));
 
-  const started = await mmPromise;
-  if (timedOut) throw new Error('No match found within the timeout window.');
+  // UI: matched
+  status.textContent = 'Match found!';
+  spinner.style.display = 'none';
 
-  status.textContent = 'Match found!'; spinner.style.display = 'none';
-  return started; // { gameId, myName, abortSeek }
+  // Return details to caller
+  return started; // { gameId, myName }
 }

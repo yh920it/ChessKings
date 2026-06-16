@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChessKings — Opening Learn Mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="CSS/chesskings.css">
+
+</head>
+<body>
+<header><span class="logo-crown">♛</span><span class="logo">ChessKings</span><span class="logo-sub">Opening Academy</span><div class="mode-badge">Learn Mode</div></header>
+<section class="trainer-controls">
+  <div class="control"><label for="sideSelect">Train as</label><select id="sideSelect"><option value="w">White — Openings</option><option value="b">Black — Defenses</option></select></div>
+  <div class="control"><label for="openingSelect">Opening</label><select id="openingSelect"></select></div>
+  <div class="control"><label for="variationSelect">Variation</label><select id="variationSelect"></select></div>
+  <button class="btn-gold" id="startLessonBtn">Start Lesson</button>
+</section>
+<main>
+<section class="game-area">
+  <div class="player-bar"><div class="p-avatar" id="topAvatar">♟</div><div class="p-info"><div class="p-name" id="topName">Trainer</div><div class="p-role" id="topRole">Black follows the lesson line</div></div><div class="p-dot" id="topDot"></div></div>
+  <div class="board-frame"><div class="rank-nums" id="rankNums"></div><div class="board-col"><div class="board-wrap"><div id="board"></div><div class="lesson-complete" id="completeOverlay"><div class="complete-title">Lesson Complete</div><div class="complete-sub" id="completeText"></div><button class="btn-gold" id="repeatLessonBtn">Practice Again</button></div></div><div class="file-lets" id="fileLetters"></div></div></div>
+  <div class="status-bar" id="statusBar">Choose a lesson to begin</div>
+  <div class="player-bar"><div class="p-avatar" id="bottomAvatar">♙</div><div class="p-info"><div class="p-name" id="bottomName">You</div><div class="p-role" id="bottomRole">White</div></div><div class="p-dot" id="bottomDot"></div></div>
+</section>
+<aside class="lesson-panel">
+  <div class="panel-title">Opening lesson</div>
+  <div class="opening-card"><div class="eco" id="ecoLabel">C50</div><div class="opening-name" id="openingName">Italian Game</div><div class="variation" id="variationName">Giuoco Piano</div></div>
+  <div class="lesson-card"><div class="objective-label">Your next move</div><div class="move-display" id="moveDisplay">Select a lesson</div><div class="explanation" id="explanation">Choose your side and opening, then start the lesson.</div><div class="instruction" id="instruction">The starting square and destination square will both light up.</div></div>
+  <div class="feedback-card" id="feedbackCard"><div class="feedback-title" id="feedbackTitle"></div><div class="feedback-text" id="feedbackText"></div></div>
+  <div class="progress-card"><div class="progress-text"><span>Lesson progress</span><span id="progressCount">0 / 0</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div></div>
+  <div class="panel-title">Move sequence</div><div class="move-list" id="moveList"></div>
+</aside>
+</main>
+<script src="JS/chesskings.js"></script>
+</body>
+</html>

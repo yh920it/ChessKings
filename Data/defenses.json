@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "id": "sicilian-najdorf",
+      "side": "b",
+      "category": "Against 1.e4",
+      "opening": "Sicilian Defense",
+      "variation": "Najdorf Variation",
+      "eco": "B90",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "1. e4",
+          "explanation": "White claims central space."
+        },
+        {
+          "uci": "c7c5",
+          "san": "...c5",
+          "explanation": "Challenge d4 from the flank and create an imbalanced game."
+        },
+        {
+          "uci": "g1f3",
+          "san": "2. Nf3",
+          "explanation": "White develops and prepares d4."
+        },
+        {
+          "uci": "d7d6",
+          "san": "...d6",
+          "explanation": "Control e5 and prepare ...Nf6."
+        },
+        {
+          "uci": "d2d4",
+          "san": "3. d4",
+          "explanation": "White opens the center."
+        },
+        {
+          "uci": "c5d4",
+          "san": "...cxd4",
+          "explanation": "Exchange the c-pawn for White’s central d-pawn."
+        },
+        {
+          "uci": "f3d4",
+          "san": "4. Nxd4",
+          "explanation": "White restores material and centralizes the knight."
+        },
+        {
+          "uci": "g8f6",
+          "san": "...Nf6",
+          "explanation": "Develop with tempo against e4."
+        },
+        {
+          "uci": "b1c3",
+          "san": "5. Nc3",
+          "explanation": "White defends e4 and develops."
+        },
+        {
+          "uci": "a7a6",
+          "san": "...a6",
+          "explanation": "The Najdorf move prevents Bb5+ and prepares queenside expansion."
+        }
+      ]
+    },
+    {
+      "id": "caro-kann",
+      "side": "b",
+      "category": "Against 1.e4",
+      "opening": "Caro-Kann Defense",
+      "variation": "Classical Variation",
+      "eco": "B18",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "1. e4",
+          "explanation": "White takes central space."
+        },
+        {
+          "uci": "c7c6",
+          "san": "...c6",
+          "explanation": "Prepare ...d5 while keeping the light bishop free."
+        },
+        {
+          "uci": "d2d4",
+          "san": "2. d4",
+          "explanation": "White builds a broad center."
+        },
+        {
+          "uci": "d7d5",
+          "san": "...d5",
+          "explanation": "Challenge White’s center immediately."
+        },
+        {
+          "uci": "b1c3",
+          "san": "3. Nc3",
+          "explanation": "White develops and supports e4."
+        },
+        {
+          "uci": "d5e4",
+          "san": "...dxe4",
+          "explanation": "Clarify the center and remove White’s e-pawn."
+        },
+        {
+          "uci": "c3e4",
+          "san": "4. Nxe4",
+          "explanation": "White recaptures and centralizes the knight."
+        },
+        {
+          "uci": "c8f5",
+          "san": "...Bf5",
+          "explanation": "Develop the bishop outside the pawn chain before ...e6."
+        }
+      ]
+    },
+    {
+      "id": "kings-indian",
+      "side": "b",
+      "category": "Against 1.d4",
+      "opening": "King's Indian Defense",
+      "variation": "Classical Setup",
+      "eco": "E90",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "1. d4",
+          "explanation": "White claims central space."
+        },
+        {
+          "uci": "g8f6",
+          "san": "...Nf6",
+          "explanation": "Develop and prevent an immediate e4 without preparation."
+        },
+        {
+          "uci": "c2c4",
+          "san": "2. c4",
+          "explanation": "White expands control of the center."
+        },
+        {
+          "uci": "g7g6",
+          "san": "...g6",
+          "explanation": "Prepare to fianchetto the dark bishop."
+        },
+        {
+          "uci": "b1c3",
+          "san": "3. Nc3",
+          "explanation": "White develops and supports e4."
+        },
+        {
+          "uci": "f8g7",
+          "san": "...Bg7",
+          "explanation": "Complete the kingside fianchetto and pressure the long diagonal."
+        },
+        {
+          "uci": "e2e4",
+          "san": "4. e4",
+          "explanation": "White forms a large pawn center."
+        },
+        {
+          "uci": "d7d6",
+          "san": "...d6",
+          "explanation": "Support ...e5 or ...c5 and restrain e5."
+        },
+        {
+          "uci": "g1f3",
+          "san": "5. Nf3",
+          "explanation": "White develops and prepares castling."
+        },
+        {
+          "uci": "e8g8",
+          "san": "...O-O",
+          "explanation": "Castle safely before attacking the center."
+        }
+      ]
+    }
+  ]
+}

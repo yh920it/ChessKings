@@ -1,0 +1,215 @@
+{
+  "version": 1,
+  "lessons": [
+    {
+      "id": "italian-giuoco",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Italian Game",
+      "variation": "Giuoco Piano",
+      "eco": "C50",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for your queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "...e5",
+          "explanation": "Black mirrors your central control."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "Develop the knight with tempo by attacking Black’s e5 pawn."
+        },
+        {
+          "uci": "b8c6",
+          "san": "...Nc6",
+          "explanation": "Black develops and protects e5."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "Develop toward the center and pressure the sensitive f7 square."
+        },
+        {
+          "uci": "f8c5",
+          "san": "...Bc5",
+          "explanation": "Black develops symmetrically and targets f2."
+        },
+        {
+          "uci": "d2d3",
+          "san": "d3",
+          "explanation": "Support e4 and prepare calm kingside development."
+        },
+        {
+          "uci": "g8f6",
+          "san": "...Nf6",
+          "explanation": "Black develops and attacks e4."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "Castle to secure your king and connect the rook."
+        }
+      ]
+    },
+    {
+      "id": "italian-two-knights",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Italian Game",
+      "variation": "Two Knights Defense",
+      "eco": "C55",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Occupy the center and release your bishop and queen."
+        },
+        {
+          "uci": "e7e5",
+          "san": "...e5",
+          "explanation": "Black contests the center."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "Develop while attacking e5."
+        },
+        {
+          "uci": "b8c6",
+          "san": "...Nc6",
+          "explanation": "Black defends the pawn and develops."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "Aim at f7 and prepare castling."
+        },
+        {
+          "uci": "g8f6",
+          "san": "...Nf6",
+          "explanation": "The Two Knights Defense attacks e4."
+        },
+        {
+          "uci": "f3g5",
+          "san": "Ng5",
+          "explanation": "Apply immediate pressure to f7."
+        },
+        {
+          "uci": "d7d5",
+          "san": "...d5",
+          "explanation": "Black strikes in the center."
+        },
+        {
+          "uci": "e4d5",
+          "san": "exd5",
+          "explanation": "Capture the central pawn and keep pressure on f7."
+        }
+      ]
+    },
+    {
+      "id": "ruy-lopez",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Ruy López",
+      "variation": "Morphy Defense",
+      "eco": "C78",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Take central space and open your kingside bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "...e5",
+          "explanation": "Black establishes an equal central foothold."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "Attack e5 while developing."
+        },
+        {
+          "uci": "b8c6",
+          "san": "...Nc6",
+          "explanation": "Defend e5 and develop."
+        },
+        {
+          "uci": "f1b5",
+          "san": "Bb5",
+          "explanation": "Pin the knight and increase indirect pressure on e5."
+        },
+        {
+          "uci": "a7a6",
+          "san": "...a6",
+          "explanation": "Black asks the bishop to decide."
+        },
+        {
+          "uci": "b5a4",
+          "san": "Ba4",
+          "explanation": "Keep the pin while preserving the bishop."
+        },
+        {
+          "uci": "g8f6",
+          "san": "...Nf6",
+          "explanation": "Black develops and attacks e4."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "Castle before resolving the central tension."
+        }
+      ]
+    },
+    {
+      "id": "queens-gambit",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Queen's Gambit",
+      "variation": "Declined",
+      "eco": "D30",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Control e5 and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "...d5",
+          "explanation": "Black creates a classical central structure."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge Black’s d5 pawn and seek a stronger center."
+        },
+        {
+          "uci": "e7e6",
+          "san": "...e6",
+          "explanation": "Black declines the gambit and reinforces d5."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "Develop and add pressure to d5."
+        },
+        {
+          "uci": "g8f6",
+          "san": "...Nf6",
+          "explanation": "Black develops toward the center."
+        },
+        {
+          "uci": "c1g5",
+          "san": "Bg5",
+          "explanation": "Pin the knight and increase positional pressure."
+        }
+      ]
+    }
+  ]
+}

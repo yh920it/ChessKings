@@ -32,3 +32,148 @@ main{display:grid;grid-template-columns:minmax(560px,1fr) 330px;min-height:calc(
 .lesson-complete{display:none;position:absolute;inset:0;background:rgba(4,4,2,.94);z-index:20;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:30px}.lesson-complete.show{display:flex}.complete-title{font:900 27px 'Cinzel';color:var(--gold-bright);text-shadow:0 0 28px rgba(240,201,74,.45)}.complete-sub{font-size:17px;color:var(--text-dim);margin:10px 0 18px}
 @media(max-width:1080px){:root{--sq-size:56px}.trainer-controls{grid-template-columns:1fr 1fr 1fr auto}main{grid-template-columns:minmax(500px,1fr) 300px}}
 @media(max-width:850px){body{overflow:auto}.trainer-controls{grid-template-columns:1fr 1fr}.trainer-controls .control:nth-child(3){grid-column:1/2}.trainer-controls button{width:100%}main{display:flex;flex-direction:column}.lesson-panel{border-left:0;border-top:1px solid var(--gold-line)}:root{--sq-size:min(11.5vw,56px)}.player-bar{max-width:calc(100vw - 30px)}header .logo-sub{display:none}}
+@media (max-width: 600px) {
+  :root {
+    --sq-size: calc((100vw - 42px) / 8);
+    --board-size: calc(var(--sq-size) * 8);
+  }
+
+  body {
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .game-area {
+    width: 100%;
+    padding: 12px 8px 20px;
+    gap: 7px;
+  }
+
+  .board-frame {
+    width: 100%;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  #board {
+    border-width: 1px;
+    box-shadow:
+      0 0 0 1px var(--gold-line),
+      0 10px 28px rgba(0, 0, 0, 0.65);
+  }
+
+  .rank-nums span {
+    width: 11px;
+    height: var(--sq-size);
+    font-size: 8px;
+  }
+
+  .file-lets {
+    margin-top: 3px;
+  }
+
+  .file-lets span {
+    width: var(--sq-size);
+    font-size: 8px;
+  }
+
+  .piece {
+    font-size: calc(var(--sq-size) * 0.72);
+  }
+
+  .player-bar {
+    width: calc(var(--board-size) + 14px);
+    max-width: calc(100vw - 16px);
+    padding: 6px 9px;
+  }
+
+  .p-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .sq.hint-source::before {
+    inset: 3px;
+    border-width: 3px;
+    border-radius: 5px;
+  }
+
+  .sq.hint-target::after {
+    width: 38%;
+    height: 38%;
+    border-width: 2px;
+  }
+}
+@media (max-width: 600px) {
+  header {
+    height: 52px;
+    padding:
+      env(safe-area-inset-top)
+      12px
+      0;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .logo-crown {
+    font-size: 21px;
+  }
+
+  .logo-sub {
+    display: none;
+  }
+
+  .mode-badge {
+    padding: 5px 8px;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .trainer-controls {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .trainer-controls .control:nth-child(3) {
+    grid-column: 1 / -1;
+  }
+
+  .trainer-controls .btn-gold {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  select,
+  button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+
+  select {
+    padding: 10px 8px;
+  }
+
+  main {
+    min-height: auto;
+  }
+
+  .lesson-panel {
+    padding: 14px 12px 24px;
+  }
+
+  .opening-name {
+    font-size: 18px;
+  }
+
+  .move-display {
+    font-size: 22px;
+  }
+
+  .explanation {
+    font-size: 15px;
+  }
+}

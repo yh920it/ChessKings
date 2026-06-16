@@ -1,4 +1,17 @@
-const UNI={wK:'♚',wQ:'♛',wR:'♜',wB:'♝',wN:'♞',wP:'♟',bK:'♚',bQ:'♛',bR:'♜',bB:'♝',bN:'♞',bP:'♟'};
+const UNI = {
+  wK: "♚︎",
+  wQ: "♛︎",
+  wR: "♜︎",
+  wB: "♝︎",
+  wN: "♞︎",
+  wP: "♟︎",
+  bK: "♚︎",
+  bQ: "♛︎",
+  bR: "♜︎",
+  bB: "♝︎",
+  bN: "♞︎",
+  bP: "♟︎"
+};
 const FILES='abcdefgh';
 let LESSONS=[];
 let board=[],turn='w',selected=null,legalTargets=[],lesson=null,ply=0,userSide='w',flipped=false,lastMove=null,wrongSquare=null,correctSquare=null,lessonActive=false;

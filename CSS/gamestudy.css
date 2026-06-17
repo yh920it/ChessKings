@@ -96,3 +96,9 @@
 .branch-selector:hover,.branch-selector:focus{border-color:var(--gold-dim);color:var(--gold-bright)}
 .move-node.branch::after{content:" ◇";color:var(--info)}
 @media(max-width:600px){.branch-selector{font-size:8px;padding-left:5px}.move-row{grid-template-columns:28px minmax(0,1fr) minmax(0,1fr)}}
+
+/* Integration repair */
+.practice-section[hidden], .practice-card[hidden]{display:none!important}
+.page-game-study .study-layout{width:100%}
+.page-game-study .move-row>span:empty{min-height:1px}
+@media(max-width:600px){.move-row{grid-template-columns:30px minmax(0,1fr) minmax(0,1fr);gap:5px}}

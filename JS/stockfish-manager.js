@@ -25,6 +25,10 @@
         const timeout = window.setTimeout(() => {
           if (!settled) {
             settled = true;
+            this.worker?.terminate();
+            this.worker = null;
+            this.ready = false;
+            this.initializing = null;
             reject(new Error("Stockfish did not become ready in time."));
           }
         }, 20000);
@@ -45,6 +49,14 @@
             window.clearTimeout(timeout);
             reject(error);
           }
+          if (this.activeRequest) {
+            this.activeRequest.reject(error);
+            this.activeRequest = null;
+          }
+          this.worker?.terminate();
+          this.worker = null;
+          this.ready = false;
+          this.initializing = null;
           this.onStateChange({ state: "error", error });
         };
 
@@ -111,7 +123,6 @@
 
       const requestId = ++this.requestCounter;
       this.send(`setoption name MultiPV value ${multiPv}`);
-      this.send("ucinewgame");
       this.send(`position fen ${fen}`);
 
       return new Promise((resolve, reject) => {
@@ -131,6 +142,11 @@
         this.onStateChange({ state: "analyzing", requestId, fen, nodeId, depth, multiPv });
         this.send(`go depth ${depth}`);
       });
+    }
+
+    newGame() {
+      this.cache.clear();
+      if (this.worker && this.ready) this.send("ucinewgame");
     }
 
     async cancelActiveAnalysis() {

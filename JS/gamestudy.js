@@ -27,6 +27,7 @@
   let analysisTimer = null;
   let analyzingNodeId = null;
   let guidedEngineBusy = false;
+  let guidedBenchmarkBusy = false;
   let guidedRequestToken = 0;
   let pendingUserMove = null;
   let guessPreparing = false;
@@ -198,14 +199,35 @@
       "engineMessage", "moveFeedbackCard", "moveFeedbackEmpty", "moveFeedbackContent",
       "feedbackMove", "feedbackRating", "feedbackLoss", "feedbackBefore", "feedbackAfter",
       "feedbackBestMove", "feedbackBestReply", "feedbackPreferredLine", "feedbackUserLine",
-      "feedbackFacts", "practiceCard", "practiceProgress", "practiceDifficulty",
+      "feedbackFacts", "practicePanelTitle", "practiceCard", "practiceProgress", "practiceDifficulty",
       "practicePrompt", "previousPositionBtn", "retryPracticeBtn", "nextPositionBtn"
     ].forEach(id => { els[id] = document.getElementById(id); });
+  }
+
+  function cancelAllEngineWork() {
+    window.clearTimeout(analysisTimer);
+    analysisTimer = null;
+    guidedRequestToken += 1;
+    guessRequestToken += 1;
+    practiceRequestToken += 1;
+    guidedEngineBusy = false;
+    guidedBenchmarkBusy = false;
+    guessPreparing = false;
+    practicePreparing = false;
+    analyzingNodeId = null;
+    pendingUserMove = null;
+    if (engine?.activeRequest) engine.stop();
+  }
+
+  function bindRequiredEvent(element, eventName, handler) {
+    if (!element) throw new Error(`Missing required Game Study element for ${eventName}.`);
+    element.addEventListener(eventName, handler);
   }
 
   function bindEvents() {
     els.modeSelect.addEventListener("change", () => {
       const nextMode = els.modeSelect.value;
+      cancelAllEngineWork();
       if (nextMode === "guess") {
         guessAttemptComplete = false;
         guessPreparing = false;
@@ -226,6 +248,11 @@
       }
 
       study.mode = nextMode;
+      if (nextMode === "guess") {
+        study.userSide = game.turn();
+        els.sideSelect.value = study.userSide;
+        flipped = study.userSide === "b";
+      }
       if (nextMode === "practice") {
         startPracticeCategory(els.practiceCategory.value);
         return;
@@ -236,6 +263,7 @@
     });
 
     els.sideSelect.addEventListener("change", () => {
+      cancelAllEngineWork();
       study.userSide = els.sideSelect.value;
       flipped = study.userSide === "b";
       renderAll();
@@ -247,9 +275,9 @@
       else createFreshStudy(STANDARD_START_FEN);
     });
     els.practiceCategory.addEventListener("change", () => startPracticeCategory(els.practiceCategory.value));
-    els.previousPositionBtn.addEventListener("click", () => changePracticePosition(-1));
-    els.retryPracticeBtn.addEventListener("click", retryPracticePosition);
-    els.nextPositionBtn.addEventListener("click", () => changePracticePosition(1));
+    bindRequiredEvent(els.previousPositionBtn, "click", () => changePracticePosition(-1));
+    bindRequiredEvent(els.retryPracticeBtn, "click", retryPracticePosition);
+    bindRequiredEvent(els.nextPositionBtn, "click", () => changePracticePosition(1));
     els.resetBtn.addEventListener("click", () => {
       if (study.mode === "practice") retryPracticePosition();
       else createFreshStudy(STANDARD_START_FEN);
@@ -274,6 +302,8 @@
   }
 
   function createFreshStudy(fen) {
+    cancelAllEngineWork();
+    engine?.newGame?.();
     const fresh = new Chess();
     if (!fresh.load(fen)) {
       showToolMessage("Unable to create the study from that position.", "error");
@@ -333,21 +363,14 @@
     const mode = study.mode;
     els.modeBadge.textContent = MODE_LABELS[mode];
     els.practiceControl.hidden = mode !== "practice";
+    if (els.practicePanelTitle) els.practicePanelTitle.hidden = mode !== "practice";
     els.practiceCard.hidden = mode !== "practice";
-    els.sideControl.hidden = mode === "free" || mode === "practice";
+    els.sideControl.hidden = mode === "free" || mode === "practice" || mode === "guess";
     els.newStudyBtn.textContent = mode === "practice" ? "Reload Position" : "New Study";
 
     if (mode === "free") {
       els.topRole.textContent = "Manual control";
       els.bottomRole.textContent = "Manual control";
-    }
-
-    if (engine?.activeRequest && mode !== "free" && mode !== "guided" && mode !== "guess" && mode !== "practice") {
-      guidedRequestToken += 1;
-      guessRequestToken += 1;
-      guidedEngineBusy = false;
-      guessPreparing = false;
-      engine.stop();
     }
 
     if (mode === "guess" && !guessStartNodeId) {
@@ -579,6 +602,11 @@
       analyzingNodeId = null;
       const child = commitMove(moveInput, "user");
       if (!child) return;
+      if (game.game_over()) {
+        child.feedback = buildTerminalMoveFeedback(child);
+        guessAttemptComplete = true;
+        return;
+      }
 
       guessPreparing = true;
       analyzingNodeId = child.id;
@@ -766,6 +794,11 @@
       analyzingNodeId = null;
       const child = commitMove(moveInput, "user");
       if (!child) return;
+      if (game.game_over()) {
+        child.feedback = buildTerminalMoveFeedback(child);
+        practiceAttemptComplete = true;
+        return;
+      }
 
       practicePreparing = true;
       analyzingNodeId = child.id;
@@ -798,6 +831,7 @@
   function renderPracticeInfo() {
     if (!els.practiceCard) return;
     els.practiceCard.hidden = study.mode !== "practice";
+    if (els.practicePanelTitle) els.practicePanelTitle.hidden = study.mode !== "practice";
     if (study.mode !== "practice") return;
 
     const position = practiceFiltered[practiceIndex];
@@ -859,7 +893,7 @@
     parent.preferredChildId = child.id;
     activatePathToNode(child.id);
     study.activeNodeId = child.id;
-    loadNodePosition(child.id);
+    loadNodePosition(child.id, { cancelEngine: false });
     clearSelection();
     renderAll();
     queueModeWork();
@@ -869,7 +903,8 @@
   function canControlCurrentTurn() {
     if (guidedEngineBusy) return false;
     if (study.mode === "free") return true;
-    if (study.mode === "guess") return !guessPreparing && !guessAttemptComplete && study.activeNodeId === guessStartNodeId;
+    if (study.mode === "guess") return !guessPreparing && !guessAttemptComplete &&
+      study.activeNodeId === guessStartNodeId && game.turn() === study.userSide;
     if (study.mode === "practice") {
       return practiceLoaded && !practicePreparing && !practiceAttemptComplete &&
         study.activeNodeId === practiceStartNodeId && game.turn() === study.userSide;
@@ -891,12 +926,8 @@
     }
   }
 
-  function loadNodePosition(nodeId, { activateBranch = true } = {}) {
-    if ((study.mode === "guided" || study.mode === "guess" || study.mode === "practice") && engine?.activeRequest) {
-      guidedRequestToken += 1;
-      guidedEngineBusy = false;
-      engine.stop();
-    }
+  function loadNodePosition(nodeId, { activateBranch = true, cancelEngine = true } = {}) {
+    if (cancelEngine) cancelAllEngineWork();
     const node = study.nodes.get(nodeId);
     if (!node) return;
     const nextGame = new Chess();
@@ -1049,29 +1080,36 @@
     let node = root;
 
     while (node) {
-      line.push(node);
       const childId = node.preferredChildId || node.children[0];
       node = childId ? study.nodes.get(childId) : null;
+      if (node) line.push(node);
     }
 
-    const moves = line.slice(1);
-    els.historyEmpty.hidden = moves.length > 0;
+    els.historyEmpty.hidden = line.length > 0;
     els.moveTree.innerHTML = "";
 
-    for (let i = 0; i < moves.length; i += 2) {
-      const whiteNode = moves[i];
-      const blackNode = moves[i + 1];
+    line.forEach(moveNode => {
+      const parent = study.nodes.get(moveNode.parentId);
+      const fenParts = (parent?.fen || STANDARD_START_FEN).split(" ");
+      const turn = fenParts[1] || moveNode.move?.color || "w";
+      const fullmove = Number(fenParts[5] || 1);
       const row = document.createElement("div");
       row.className = "move-row";
 
       const number = document.createElement("span");
       number.className = "move-number";
-      number.textContent = `${Math.floor(i / 2) + 1}.`;
+      number.textContent = turn === "w" ? `${fullmove}.` : `${fullmove}…`;
       row.appendChild(number);
-      row.appendChild(createMoveButton(whiteNode));
-      row.appendChild(blackNode ? createMoveButton(blackNode) : document.createElement("span"));
+
+      if (turn === "w") {
+        row.appendChild(createMoveButton(moveNode));
+        row.appendChild(document.createElement("span"));
+      } else {
+        row.appendChild(document.createElement("span"));
+        row.appendChild(createMoveButton(moveNode));
+      }
       els.moveTree.appendChild(row);
-    }
+    });
   }
 
   function createMoveButton(node) {
@@ -1127,7 +1165,12 @@
 
   function queueModeWork() {
     window.clearTimeout(analysisTimer);
-    if (game.game_over()) return;
+    if (game.game_over()) {
+      const active = getActiveNode();
+      if (active?.source === "user" && !active.feedback) active.feedback = buildTerminalMoveFeedback(active);
+      renderMoveFeedback();
+      return;
+    }
 
     if (study.mode === "free") {
       analysisTimer = window.setTimeout(() => requestActiveAnalysis(false), 180);
@@ -1151,9 +1194,28 @@
       return;
     }
 
-    if (study.mode === "guided" && game.turn() !== study.userSide) {
+    if (study.mode === "guided") {
       const node = getActiveNode();
-      if (node && node.children.length === 0) {
+      if (!node) return;
+      if (game.turn() === study.userSide) {
+        if (!node.analysis && !guidedBenchmarkBusy) {
+          analysisTimer = window.setTimeout(() => prepareGuidedBenchmark(node.id), 180);
+        }
+        return;
+      }
+
+      const preferred = node.preferredChildId ? study.nodes.get(node.preferredChildId) : null;
+      const savedEngineMove = preferred?.source === "engine"
+        ? preferred
+        : node.children.map(id => study.nodes.get(id)).find(child => child?.source === "engine");
+      if (savedEngineMove) {
+        node.preferredChildId = savedEngineMove.id;
+        analysisTimer = window.setTimeout(() => {
+          loadNodePosition(savedEngineMove.id);
+          renderAll();
+          queueModeWork();
+        }, 180);
+      } else {
         analysisTimer = window.setTimeout(() => requestGuidedReply(node.id), 180);
       }
     }
@@ -1192,10 +1254,27 @@
     }
   }
 
+  async function prepareGuidedBenchmark(nodeId) {
+    if (study.mode !== "guided" || game.turn() !== study.userSide || guidedBenchmarkBusy) return;
+    const node = study.nodes.get(nodeId);
+    if (!node || node.id !== study.activeNodeId || node.fen !== game.fen() || node.analysis) return;
+    const token = ++guidedRequestToken;
+    guidedBenchmarkBusy = true;
+    try {
+      const result = await engine.analyze(node.fen, { nodeId: node.id, depth: 16, multiPv: 1 });
+      if (token !== guidedRequestToken || study.mode !== "guided" || study.activeNodeId !== node.id) return;
+      node.analysis = enrichAnalysisResult(result);
+    } catch (error) {
+      if (error?.name !== "AbortError") console.warn("Guided benchmark unavailable:", error);
+    } finally {
+      if (token === guidedRequestToken) guidedBenchmarkBusy = false;
+    }
+  }
+
   async function requestGuidedReply(nodeId) {
     if (study.mode !== "guided" || game.game_over() || game.turn() === study.userSide) return;
     const node = study.nodes.get(nodeId);
-    if (!node || node.id !== study.activeNodeId || node.fen !== game.fen() || node.children.length) return;
+    if (!node || node.id !== study.activeNodeId || node.fen !== game.fen()) return;
 
     const requestToken = ++guidedRequestToken;
     guidedEngineBusy = true;
@@ -1404,6 +1483,33 @@
     };
   }
 
+  function buildTerminalMoveFeedback(node) {
+    const parent = study.nodes.get(node.parentId);
+    if (!parent?.analysis || !node.move) return null;
+    const beforeLine = parent.analysis.lines[0];
+    const beforeScore = beforeLine?.normalizedScore || null;
+    const terminalGame = new Chess();
+    terminalGame.load(node.fen);
+    const isMate = terminalGame.in_checkmate();
+    const afterScore = isMate
+      ? { type: "mate", value: node.move.color === "w" ? 1 : -1 }
+      : { type: "cp", value: 0 };
+    const preferredUci = parent.analysis.bestMove || beforeLine?.pv?.[0] || null;
+    const forced = countLegalMoves(parent.fen) === 1;
+    const isPreferredMove = preferredUci === node.move.uci;
+    const lossCp = calculateEvaluationLoss(beforeScore, afterScore, node.move.color);
+    const classification = isMate ? "Best" : classifyMove({ lossCp, forced, isPreferredMove, beforeScore, afterScore, mover: node.move.color });
+    const facts = collectVerifiedFacts(node, null);
+    if (!isMate) facts.push(terminalGame.in_stalemate() ? "The move ended the game by stalemate." : "The move ended the game in a draw.");
+    return {
+      moveSan: node.move.san, classification, lossCp, beforeScore, afterScore,
+      preferredMove: parent.analysis.bestMoveSan || beforeLine?.sanLine?.[0] || preferredUci || "—",
+      bestReply: isMate ? "None — checkmate" : "None — game over",
+      preferredLine: (beforeLine?.sanLine || []).slice(0, 9),
+      userLine: [node.move.san], facts
+    };
+  }
+
   function countLegalMoves(fen) {
     const position = new Chess();
     return position.load(fen) ? position.moves().length : 0;
@@ -1429,16 +1535,16 @@
 
   function classifyMove({ lossCp, forced, isPreferredMove, beforeScore, afterScore, mover }) {
     if (forced) return "Forced";
-    if (isPreferredMove || lossCp === null || lossCp <= 10) return "Best";
+    if (isPreferredMove || lossCp === null || lossCp <= 15) return "Best";
 
     const beforeMateForMover = beforeScore?.type === "mate" && ((mover === "w" && beforeScore.value > 0) || (mover === "b" && beforeScore.value < 0));
     const afterMateForMover = afterScore?.type === "mate" && ((mover === "w" && afterScore.value > 0) || (mover === "b" && afterScore.value < 0));
     if (beforeMateForMover && !afterMateForMover) return "Blunder";
 
-    if (lossCp <= 30) return "Excellent";
-    if (lossCp <= 60) return "Good";
-    if (lossCp <= 100) return "Inaccuracy";
-    if (lossCp <= 200) return "Mistake";
+    if (lossCp <= 35) return "Excellent";
+    if (lossCp <= 75) return "Good";
+    if (lossCp <= 150) return "Inaccuracy";
+    if (lossCp <= 300) return "Mistake";
     return "Blunder";
   }
 
@@ -1463,9 +1569,12 @@
 
   function renderMoveFeedback() {
     const active = getActiveNode();
-    let node = active;
-    while (node && !node.feedback) node = node.parentId ? study.nodes.get(node.parentId) : null;
-    const feedback = node?.feedback;
+    let feedbackNode = active?.feedback ? active : null;
+    if (!feedbackNode && active?.source === "engine" && active.parentId) {
+      const parent = study.nodes.get(active.parentId);
+      if (parent?.feedback) feedbackNode = parent;
+    }
+    const feedback = feedbackNode?.feedback;
 
     if (!feedback || (study.mode !== "guided" && study.mode !== "guess" && study.mode !== "practice")) {
       els.moveFeedbackEmpty.hidden = false;

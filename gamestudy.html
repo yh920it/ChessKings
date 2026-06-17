@@ -11,7 +11,7 @@
 </head>
 <body class="page-game-study">
   <header>
-    <span class="logo-crown">♟︎</span>
+    <span class="logo-crown">♚︎</span>
     <span class="logo">ChessKings</span>
     <span class="logo-sub">Game Study</span>
     <div class="mode-badge" id="modeBadge">Guided Play</div>
@@ -64,7 +64,7 @@
         <div class="rank-nums" id="rankNums"></div>
         <div class="board-col">
           <div class="board-wrap">
-            <div id="studyBoard" aria-label="Chess board"></div>
+            <div id="studyBoard" role="grid" aria-label="Chess board"></div>
             <div class="promotion-dialog" id="promotionDialog" hidden>
               <div class="promotion-card">
                 <div class="panel-title">Choose promotion</div>
@@ -92,7 +92,7 @@
         <div class="p-dot active" id="bottomDot"></div>
       </div>
 
-      <div class="board-actions" aria-label="Board navigation">
+      <div class="board-actions" role="group" aria-label="Board navigation">
         <button type="button" id="goStartBtn" title="Go to start">|◀</button>
         <button type="button" id="previousBtn" title="Previous move">◀</button>
         <button type="button" id="nextBtn" title="Next move">▶</button>
@@ -186,6 +186,21 @@
             <div><span class="analysis-label">Your line</span><p id="feedbackUserLine">—</p></div>
           </div>
           <div class="feedback-facts" id="feedbackFacts"></div>
+        </div>
+      </div>
+
+
+      <div class="panel-title practice-section" id="practicePanelTitle" hidden>Practice position</div>
+      <div class="practice-card" id="practiceCard" hidden>
+        <div class="practice-meta">
+          <span id="practiceProgress">Loading positions…</span>
+          <span id="practiceDifficulty">—</span>
+        </div>
+        <p id="practicePrompt">Select Position Practice to begin.</p>
+        <div class="practice-actions">
+          <button type="button" id="previousPositionBtn">Previous</button>
+          <button type="button" id="retryPracticeBtn">Retry</button>
+          <button type="button" id="nextPositionBtn">Next</button>
         </div>
       </div>
 

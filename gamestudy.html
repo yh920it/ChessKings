@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ChessKings — Game Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/chesskings.css">
+  <link rel="stylesheet" href="CSS/gamestudy.css">
+</head>
+<body class="page-game-study">
+  <header>
+    <span class="logo-crown">♚︎</span>
+    <span class="logo">ChessKings</span>
+    <span class="logo-sub">Game Study</span>
+    <div class="mode-badge" id="modeBadge">Guided Play</div>
+  </header>
+
+  <section class="study-controls" aria-label="Study controls">
+    <div class="control">
+      <label for="modeSelect">Study mode</label>
+      <select id="modeSelect">
+        <option value="guided">Guided Play</option>
+        <option value="guess">Guess the Best Move</option>
+        <option value="free">Free Analysis</option>
+        <option value="practice">Position Practice</option>
+      </select>
+    </div>
+
+    <div class="control" id="sideControl">
+      <label for="sideSelect">Play as</label>
+      <select id="sideSelect">
+        <option value="w">White</option>
+        <option value="b">Black</option>
+      </select>
+    </div>
+
+    <div class="control practice-only" id="practiceControl" hidden>
+      <label for="practiceCategory">Position category</label>
+      <select id="practiceCategory">
+        <option value="opening">Opening Continuations</option>
+        <option value="middlegame">Middlegame Decisions</option>
+        <option value="tactical">Tactical Positions</option>
+        <option value="endgame">Endgame Positions</option>
+      </select>
+    </div>
+
+    <button class="btn-gold" id="newStudyBtn" type="button">New Study</button>
+  </section>
+
+  <main class="study-layout">
+    <section class="study-board-area">
+      <div class="player-bar">
+        <div class="p-avatar" id="topAvatar">♟</div>
+        <div class="p-info">
+          <div class="p-name" id="topName">Black</div>
+          <div class="p-role" id="topRole">Engine side</div>
+        </div>
+        <div class="p-dot" id="topDot"></div>
+      </div>
+
+      <div class="board-frame">
+        <div class="rank-nums" id="rankNums"></div>
+        <div class="board-col">
+          <div class="board-wrap">
+            <div id="studyBoard" aria-label="Chess board"></div>
+            <div class="promotion-dialog" id="promotionDialog" hidden>
+              <div class="promotion-card">
+                <div class="panel-title">Choose promotion</div>
+                <div class="promotion-options">
+                  <button type="button" data-piece="q">Queen</button>
+                  <button type="button" data-piece="r">Rook</button>
+                  <button type="button" data-piece="b">Bishop</button>
+                  <button type="button" data-piece="n">Knight</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="file-lets" id="fileLetters"></div>
+        </div>
+      </div>
+
+      <div class="status-bar" id="statusBar">White to move</div>
+
+      <div class="player-bar">
+        <div class="p-avatar" id="bottomAvatar">♙</div>
+        <div class="p-info">
+          <div class="p-name" id="bottomName">White</div>
+          <div class="p-role" id="bottomRole">Your side</div>
+        </div>
+        <div class="p-dot active" id="bottomDot"></div>
+      </div>
+
+      <div class="board-actions" aria-label="Board navigation">
+        <button type="button" id="goStartBtn" title="Go to start">|◀</button>
+        <button type="button" id="previousBtn" title="Previous move">◀</button>
+        <button type="button" id="nextBtn" title="Next move">▶</button>
+        <button type="button" id="goEndBtn" title="Go to end">▶|</button>
+        <button type="button" id="flipBtn">Flip Board</button>
+        <button type="button" id="resetBtn">Reset</button>
+      </div>
+    </section>
+
+    <aside class="study-panel">
+      <div class="panel-title">Current study</div>
+      <div class="study-card">
+        <div class="study-eyebrow" id="studySource">New study</div>
+        <div class="study-title" id="studyTitle">Starting Position</div>
+        <div class="study-subtitle" id="studySubtitle">Guided Play · White</div>
+      </div>
+
+      <div class="panel-title">Position</div>
+      <div class="analysis-card">
+        <div class="analysis-grid">
+          <div>
+            <span class="analysis-label">Turn</span>
+            <strong id="turnValue">White</strong>
+          </div>
+          <div>
+            <span class="analysis-label">Move</span>
+            <strong id="moveNumberValue">1</strong>
+          </div>
+          <div>
+            <span class="analysis-label">Status</span>
+            <strong id="positionStatus">In progress</strong>
+          </div>
+          <div>
+            <span class="analysis-label">Variations</span>
+            <strong id="variationCount">0</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-title">Engine analysis</div>
+      <div class="analysis-card engine-card" id="engineCard">
+        <div class="engine-heading">
+          <div>
+            <div class="engine-state" id="engineState">Engine idle</div>
+            <div class="engine-meta" id="engineMeta">Free Analysis activates Stockfish.</div>
+          </div>
+          <div class="engine-evaluation" id="engineEvaluation">—</div>
+        </div>
+
+        <div class="engine-summary">
+          <div>
+            <span class="analysis-label">Best move</span>
+            <strong id="engineBestMove">—</strong>
+          </div>
+          <div>
+            <span class="analysis-label">Depth</span>
+            <strong id="engineDepth">—</strong>
+          </div>
+        </div>
+
+        <div class="candidate-list" id="candidateList">
+          <div class="engine-empty">Switch to Free Analysis to evaluate the active position.</div>
+        </div>
+
+        <div class="engine-actions">
+          <button type="button" id="analyzeBtn">Analyze Position</button>
+          <button type="button" id="stopAnalysisBtn" disabled>Stop</button>
+        </div>
+        <p class="engine-note" id="engineMessage">Evaluations are shown from White’s perspective. Positive favors White; negative favors Black.</p>
+      </div>
+
+      <div class="panel-title">Move feedback</div>
+      <div class="analysis-card feedback-analysis" id="moveFeedbackCard">
+        <div class="feedback-empty" id="moveFeedbackEmpty">Make a move in Guided Play or Guess the Best Move to receive an engine-backed rating.</div>
+        <div id="moveFeedbackContent" hidden>
+          <div class="feedback-heading">
+            <div>
+              <div class="feedback-move" id="feedbackMove">—</div>
+              <div class="feedback-rating" id="feedbackRating">—</div>
+            </div>
+            <div class="feedback-loss" id="feedbackLoss">—</div>
+          </div>
+          <div class="feedback-grid">
+            <div><span class="analysis-label">Before</span><strong id="feedbackBefore">—</strong></div>
+            <div><span class="analysis-label">After</span><strong id="feedbackAfter">—</strong></div>
+            <div><span class="analysis-label">Preferred move</span><strong id="feedbackBestMove">—</strong></div>
+            <div><span class="analysis-label">Best reply</span><strong id="feedbackBestReply">—</strong></div>
+          </div>
+          <div class="feedback-lines">
+            <div><span class="analysis-label">Preferred line</span><p id="feedbackPreferredLine">—</p></div>
+            <div><span class="analysis-label">Your line</span><p id="feedbackUserLine">—</p></div>
+          </div>
+          <div class="feedback-facts" id="feedbackFacts"></div>
+        </div>
+      </div>
+
+      <div class="panel-title">Move history</div>
+      <div class="history-card">
+        <div class="move-tree" id="moveTree"></div>
+        <div class="history-empty" id="historyEmpty">Make a move to begin the study.</div>
+      </div>
+
+      <div class="panel-title">Position tools</div>
+      <div class="position-tools">
+        <label for="fenInput">FEN</label>
+        <textarea id="fenInput" rows="3" spellcheck="false"></textarea>
+        <div class="tool-buttons">
+          <button type="button" id="loadFenBtn">Load FEN</button>
+          <button type="button" id="copyFenBtn">Copy FEN</button>
+        </div>
+        <p class="tool-message" id="toolMessage" aria-live="polite"></p>
+      </div>
+    </aside>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+  <script src="JS/stockfish-manager.js"></script>
+  <script src="JS/gamestudy.js"></script>
+</body>
+</html>

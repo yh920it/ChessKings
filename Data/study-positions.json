@@ -1,0 +1,165 @@
+{
+  "version": 1,
+  "positions": [
+    {
+      "id": "opening-italian-01",
+      "title": "Italian Game Development",
+      "category": "opening",
+      "difficulty": "Beginner",
+      "side": "w",
+      "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 3",
+      "prompt": "Find White's strongest developing continuation.",
+      "source": "Curated Opening Position"
+    },
+    {
+      "id": "opening-sicilian-01",
+      "title": "Sicilian Defense Response",
+      "category": "opening",
+      "difficulty": "Beginner",
+      "side": "w",
+      "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/8/PPPP1PPP/RNBQKBNR w KQkq c6 0 2",
+      "prompt": "Choose White's strongest continuation against the Sicilian Defense.",
+      "source": "Curated Opening Position"
+    },
+    {
+      "id": "opening-queens-gambit-01",
+      "title": "Queen's Gambit Position",
+      "category": "opening",
+      "difficulty": "Intermediate",
+      "side": "b",
+      "fen": "rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR b KQkq c3 0 2",
+      "prompt": "Find Black's strongest response to the Queen's Gambit.",
+      "source": "Curated Opening Position"
+    },
+    {
+      "id": "opening-french-01",
+      "title": "French Defense Center",
+      "category": "opening",
+      "difficulty": "Intermediate",
+      "side": "w",
+      "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/4P3/8/PPPP1PPP/RNBQKBNR w KQkq d6 0 3",
+      "prompt": "Find White's strongest central continuation.",
+      "source": "Curated Opening Position"
+    },
+    {
+      "id": "middlegame-open-file-01",
+      "title": "Open-File Decision",
+      "category": "middlegame",
+      "difficulty": "Intermediate",
+      "side": "w",
+      "fen": "r2q1rk1/ppp2ppp/2npbn2/8/2B1P3/2N2N2/PPPQ1PPP/R3K2R w KQ - 4 9",
+      "prompt": "Find the strongest move in this developing middlegame.",
+      "source": "Curated Middlegame Position"
+    },
+    {
+      "id": "middlegame-center-01",
+      "title": "Central Tension",
+      "category": "middlegame",
+      "difficulty": "Intermediate",
+      "side": "b",
+      "fen": "r1bq1rk1/pp2bppp/2n1pn2/2pp4/3P4/2PBPN2/PP1N1PPP/R1BQ1RK1 b - - 2 8",
+      "prompt": "Choose Black's strongest continuation in the center.",
+      "source": "Curated Middlegame Position"
+    },
+    {
+      "id": "middlegame-kingside-01",
+      "title": "Kingside Pressure",
+      "category": "middlegame",
+      "difficulty": "Advanced",
+      "side": "w",
+      "fen": "r2q1rk1/ppp2ppp/2n1bn2/3p4/3P4/2P1PN2/PP1N1PPP/R2Q1RK1 w - - 0 10",
+      "prompt": "Find White's strongest move before the position simplifies.",
+      "source": "Curated Middlegame Position"
+    },
+    {
+      "id": "middlegame-queenside-01",
+      "title": "Queenside Structure",
+      "category": "middlegame",
+      "difficulty": "Advanced",
+      "side": "b",
+      "fen": "2rq1rk1/pp2bppp/2n1pn2/2pp4/3P4/2P1PN2/PPQN1PPP/R3KB1R b KQ - 2 9",
+      "prompt": "Find Black's most accurate continuation.",
+      "source": "Curated Middlegame Position"
+    },
+    {
+      "id": "tactical-mate-net-01",
+      "title": "King-Safety Tactic",
+      "category": "tactical",
+      "difficulty": "Intermediate",
+      "side": "w",
+      "fen": "6k1/5ppp/8/8/8/5Q2/5PPP/6K1 w - - 0 1",
+      "prompt": "Find White's strongest forcing move.",
+      "source": "Curated Tactical Position"
+    },
+    {
+      "id": "tactical-rook-01",
+      "title": "Rook Activity",
+      "category": "tactical",
+      "difficulty": "Intermediate",
+      "side": "w",
+      "fen": "4k3/8/8/8/8/8/4R3/4K3 w - - 0 1",
+      "prompt": "Find the most forcing rook move.",
+      "source": "Curated Tactical Position"
+    },
+    {
+      "id": "tactical-queen-01",
+      "title": "Queen and King Coordination",
+      "category": "tactical",
+      "difficulty": "Advanced",
+      "side": "b",
+      "fen": "6k1/5pp1/7p/8/8/6Q1/5PPP/6K1 b - - 0 1",
+      "prompt": "Find Black's strongest defensive or forcing move.",
+      "source": "Curated Tactical Position"
+    },
+    {
+      "id": "tactical-minor-piece-01",
+      "title": "Minor-Piece Tactic",
+      "category": "tactical",
+      "difficulty": "Advanced",
+      "side": "w",
+      "fen": "4k3/8/3n4/8/3B4/8/8/4K3 w - - 0 1",
+      "prompt": "Find White's most accurate move in the piece battle.",
+      "source": "Curated Tactical Position"
+    },
+    {
+      "id": "endgame-pawn-01",
+      "title": "King and Pawn Endgame",
+      "category": "endgame",
+      "difficulty": "Beginner",
+      "side": "w",
+      "fen": "8/8/8/8/8/4K3/4P3/4k3 w - - 0 1",
+      "prompt": "Find White's strongest move in the pawn ending.",
+      "source": "Curated Endgame Position"
+    },
+    {
+      "id": "endgame-opposition-01",
+      "title": "Opposition Decision",
+      "category": "endgame",
+      "difficulty": "Intermediate",
+      "side": "w",
+      "fen": "8/8/8/8/3k4/8/3P4/3K4 w - - 0 1",
+      "prompt": "Find the most accurate king-and-pawn move.",
+      "source": "Curated Endgame Position"
+    },
+    {
+      "id": "endgame-rook-01",
+      "title": "Rook Endgame Activity",
+      "category": "endgame",
+      "difficulty": "Intermediate",
+      "side": "b",
+      "fen": "8/8/4k3/8/8/4K3/4R3/8 b - - 0 1",
+      "prompt": "Find Black's strongest defensive move.",
+      "source": "Curated Endgame Position"
+    },
+    {
+      "id": "endgame-queen-01",
+      "title": "Queen Endgame Technique",
+      "category": "endgame",
+      "difficulty": "Advanced",
+      "side": "w",
+      "fen": "7k/8/8/8/8/5K2/6Q1/8 w - - 0 1",
+      "prompt": "Find White's strongest continuation.",
+      "source": "Curated Endgame Position"
+    }
+  ]
+}

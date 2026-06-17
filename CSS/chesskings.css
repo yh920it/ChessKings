@@ -177,3 +177,8 @@ main{display:grid;grid-template-columns:minmax(560px,1fr) 330px;min-height:calc(
     font-size: 15px;
   }
 }
+/* Opening Academy → Game Study handoff */
+.complete-actions{display:flex;flex-direction:column;gap:9px;width:min(280px,100%)}
+.complete-actions .btn-gold,.complete-actions .btn-secondary{width:100%}
+.btn-secondary{border:1px solid var(--gold-line);border-radius:6px;padding:10px 18px;background:var(--panel3);color:var(--text);font:700 10px 'Cinzel';letter-spacing:.13em;text-transform:uppercase;cursor:pointer}
+.btn-secondary:hover{border-color:var(--gold-dim);color:var(--gold-bright)}

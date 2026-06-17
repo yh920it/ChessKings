@@ -660,6 +660,2326 @@
           "explanation": "Build a strong central grip."
         }
       ]
+    },
+    {
+      "id": "italian-evans-gambit",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Italian Game",
+      "variation": "Evans Gambit",
+      "eco": "C51",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8c5",
+          "san": "Bc5",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "b2b4",
+          "san": "b4",
+          "explanation": "Gain queenside space or offer a pawn for activity."
+        },
+        {
+          "uci": "c5b4",
+          "san": "Bxb4",
+          "explanation": "Black captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "b4a5",
+          "san": "Ba5",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "e5d4",
+          "san": "exd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "italian-classical",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Italian Game",
+      "variation": "Classical Variation",
+      "eco": "C53",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8c5",
+          "san": "Bc5",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "e5d4",
+          "san": "exd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c3d4",
+          "san": "cxd4",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c5b4",
+          "san": "Bb4+",
+          "explanation": "Black develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "italian-fried-liver",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Italian Game",
+      "variation": "Fried Liver Attack",
+      "eco": "C57",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f3g5",
+          "san": "Ng5",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e4d5",
+          "san": "exd5",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "f6d5",
+          "san": "Nxd5",
+          "explanation": "Black captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "g5f7",
+          "san": "Nxf7",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        }
+      ]
+    },
+    {
+      "id": "ruy-lopez-exchange",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Ruy López",
+      "variation": "Exchange Variation",
+      "eco": "C68",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1b5",
+          "san": "Bb5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "a7a6",
+          "san": "a6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "b5c6",
+          "san": "Bxc6",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "d7c6",
+          "san": "dxc6",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "ruy-lopez-closed",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Ruy López",
+      "variation": "Closed Variation",
+      "eco": "C84",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1b5",
+          "san": "Bb5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "a7a6",
+          "san": "a6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "b5a4",
+          "san": "Ba4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "f8e7",
+          "san": "Be7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f1e1",
+          "san": "Re1",
+          "explanation": "White activates a rook on an important file."
+        },
+        {
+          "uci": "b7b5",
+          "san": "b5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "a4b3",
+          "san": "Bb3",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "d7d6",
+          "san": "d6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        }
+      ]
+    },
+    {
+      "id": "ruy-lopez-marshall",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Ruy López",
+      "variation": "Marshall Attack",
+      "eco": "C89",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1b5",
+          "san": "Bb5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "a7a6",
+          "san": "a6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "b5a4",
+          "san": "Ba4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "f8e7",
+          "san": "Be7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f1e1",
+          "san": "Re1",
+          "explanation": "White activates a rook on an important file."
+        },
+        {
+          "uci": "b7b5",
+          "san": "b5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "a4b3",
+          "san": "Bb3",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e8g8",
+          "san": "O-O",
+          "explanation": "Black castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        }
+      ]
+    },
+    {
+      "id": "scotch-gambit",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Scotch Game",
+      "variation": "Scotch Gambit",
+      "eco": "C44",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "e5d4",
+          "san": "exd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "four-knights-main",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Four Knights Game",
+      "variation": "Main Line",
+      "eco": "C47",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1b5",
+          "san": "Bb5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8b4",
+          "san": "Bb4",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "e8g8",
+          "san": "O-O",
+          "explanation": "Black castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "petrov-classical",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Petrov Defense",
+      "variation": "Classical Attack",
+      "eco": "C42",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f3e5",
+          "san": "Nxe5",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "d7d6",
+          "san": "d6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e5f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f6e4",
+          "san": "Nxe4",
+          "explanation": "Black captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d6d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "f1d3",
+          "san": "Bd3",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "danish-gambit",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Danish Gambit",
+      "variation": "Accepted",
+      "eco": "C21",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "e5d4",
+          "san": "exd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "d4c3",
+          "san": "dxc3",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "c3b2",
+          "san": "cxb2",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c1b2",
+          "san": "Bxb2",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        }
+      ]
+    },
+    {
+      "id": "center-game",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Center Game",
+      "variation": "Main Line",
+      "eco": "C22",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "e5d4",
+          "san": "exd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "d1d4",
+          "san": "Qxd4",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d4e3",
+          "san": "Qe3",
+          "explanation": "White places the queen actively while supporting the position."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "ponziani-main",
+      "side": "w",
+      "category": "Open Games",
+      "opening": "Ponziani Opening",
+      "variation": "Main Line",
+      "eco": "C44",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "e5d4",
+          "san": "exd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "e4e5",
+          "san": "e5",
+          "explanation": "White strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "f6d5",
+          "san": "Nd5",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c3d4",
+          "san": "cxd4",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        }
+      ]
+    },
+    {
+      "id": "open-sicilian",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Sicilian Defense",
+      "variation": "Open Sicilian",
+      "eco": "B30",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "c5d4",
+          "san": "cxd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "f3d4",
+          "san": "Nxd4",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        }
+      ]
+    },
+    {
+      "id": "sicilian-alapin-white",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Sicilian Defense",
+      "variation": "Alapin Variation",
+      "eco": "B22",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e4d5",
+          "san": "exd5",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "d8d5",
+          "san": "Qxd5",
+          "explanation": "Black captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "smith-morra-gambit",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Sicilian Defense",
+      "variation": "Smith-Morra Gambit",
+      "eco": "B21",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "c5d4",
+          "san": "cxd4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "d4c3",
+          "san": "dxc3",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nxc3",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "sicilian-grand-prix",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Sicilian Defense",
+      "variation": "Grand Prix Attack",
+      "eco": "B23",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f2f4",
+          "san": "f4",
+          "explanation": "Support an aggressive kingside plan and contest e5."
+        },
+        {
+          "uci": "g7g6",
+          "san": "g6",
+          "explanation": "Black supports a kingside plan or challenges a piece."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f8g7",
+          "san": "Bg7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f1c4",
+          "san": "Bc4",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "closed-sicilian",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Sicilian Defense",
+      "variation": "Closed Variation",
+      "eco": "B23",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "g7g6",
+          "san": "g6",
+          "explanation": "Black supports a kingside plan or challenges a piece."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8g7",
+          "san": "Bg7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "d2d3",
+          "san": "d3",
+          "explanation": "Reinforce the center and keep the position flexible."
+        },
+        {
+          "uci": "d7d6",
+          "san": "d6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        }
+      ]
+    },
+    {
+      "id": "french-advance-white",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "French Defense",
+      "variation": "Advance Variation",
+      "eco": "C02",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e4e5",
+          "san": "e5",
+          "explanation": "White strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "c2c3",
+          "san": "c3",
+          "explanation": "Support a future d4 advance and build the center."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "french-tarrasch-white",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "French Defense",
+      "variation": "Tarrasch Variation",
+      "eco": "C03",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1d2",
+          "san": "Nd2",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e4e5",
+          "san": "e5",
+          "explanation": "White strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "f6d7",
+          "san": "Nfd7",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1d3",
+          "san": "Bd3",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "french-exchange-white",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "French Defense",
+      "variation": "Exchange Variation",
+      "eco": "C01",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e4d5",
+          "san": "exd5",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "e6d5",
+          "san": "exd5",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1d3",
+          "san": "Bd3",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "caro-kann-classical-white",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Caro-Kann Defense",
+      "variation": "Classical Variation",
+      "eco": "B18",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c6",
+          "san": "c6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d5e4",
+          "san": "dxe4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c3e4",
+          "san": "Nxe4",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "c8f5",
+          "san": "Bf5",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e4g3",
+          "san": "Ng3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f5g6",
+          "san": "Bg6",
+          "explanation": "Black develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "caro-kann-advance-white",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Caro-Kann Defense",
+      "variation": "Advance Variation",
+      "eco": "B12",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c6",
+          "san": "c6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e4e5",
+          "san": "e5",
+          "explanation": "White strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c8f5",
+          "san": "Bf5",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "f1e2",
+          "san": "Be2",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "caro-kann-panov",
+      "side": "w",
+      "category": "Semi-Open Games",
+      "opening": "Caro-Kann Defense",
+      "variation": "Panov Attack",
+      "eco": "B13",
+      "moves": [
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "c7c6",
+          "san": "c6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e4d5",
+          "san": "exd5",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c6d5",
+          "san": "cxd5",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "catalan-closed",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Catalan Opening",
+      "variation": "Closed Variation",
+      "eco": "E06",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8e7",
+          "san": "Be7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e8g8",
+          "san": "O-O",
+          "explanation": "Black castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "semi-slav-white",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Semi-Slav Defense",
+      "variation": "Main Line",
+      "eco": "D44",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c7c6",
+          "san": "c6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "e2e3",
+          "san": "e3",
+          "explanation": "Strengthen the center and open the dark-squared bishop."
+        }
+      ]
+    },
+    {
+      "id": "slav-main-white",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Slav Defense",
+      "variation": "Main Line",
+      "eco": "D10",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "c7c6",
+          "san": "c6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d5c4",
+          "san": "dxc4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "a2a4",
+          "san": "a4",
+          "explanation": "Prevent ...b5 and gain queenside space."
+        }
+      ]
+    },
+    {
+      "id": "cambridge-springs-white",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Queen's Gambit Declined",
+      "variation": "Cambridge Springs Defense",
+      "eco": "D52",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c1g5",
+          "san": "Bg5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "b8d7",
+          "san": "Nbd7",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e2e3",
+          "san": "e3",
+          "explanation": "Strengthen the center and open the dark-squared bishop."
+        },
+        {
+          "uci": "c7c6",
+          "san": "c6",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d8a5",
+          "san": "Qa5",
+          "explanation": "Black places the queen actively while supporting the position."
+        }
+      ]
+    },
+    {
+      "id": "albin-countergambit-white",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Queen's Gambit",
+      "variation": "Albin Countergambit",
+      "eco": "D08",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "d4e5",
+          "san": "dxe5",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "d5d4",
+          "san": "d4",
+          "explanation": "Contest central space and open the queen bishop."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "a2a3",
+          "san": "a3",
+          "explanation": "Restrict a piece or prepare queenside expansion."
+        }
+      ]
+    },
+    {
+      "id": "colle-system",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Colle System",
+      "variation": "Main Setup",
+      "eco": "D05",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e2e3",
+          "san": "e3",
+          "explanation": "Strengthen the center and open the dark-squared bishop."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "f1d3",
+          "san": "Bd3",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "c7c5",
+          "san": "c5",
+          "explanation": "Black gains queenside space or supports the center."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "trompowsky-attack",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Trompowsky Attack",
+      "variation": "Main Line",
+      "eco": "A45",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c1g5",
+          "san": "Bg5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "h7h6",
+          "san": "h6",
+          "explanation": "Black supports a kingside plan or challenges a piece."
+        },
+        {
+          "uci": "g5f6",
+          "san": "Bxf6",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "d8f6",
+          "san": "Qxf6",
+          "explanation": "Black captures while improving piece activity or clarifying the position."
+        }
+      ]
+    },
+    {
+      "id": "jobava-london",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Jobava London System",
+      "variation": "Main Setup",
+      "eco": "D00",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "c1f4",
+          "san": "Bf4",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e2e3",
+          "san": "e3",
+          "explanation": "Strengthen the center and open the dark-squared bishop."
+        },
+        {
+          "uci": "f8d6",
+          "san": "Bd6",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "blackmar-diemer",
+      "side": "w",
+      "category": "Queen's Pawn Openings",
+      "opening": "Blackmar-Diemer Gambit",
+      "variation": "Accepted",
+      "eco": "D00",
+      "moves": [
+        {
+          "uci": "d2d4",
+          "san": "d4",
+          "explanation": "Take central space and open the queen bishop."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "d5e4",
+          "san": "dxe4",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f2f3",
+          "san": "f3",
+          "explanation": "White supports a kingside plan or challenges a piece."
+        },
+        {
+          "uci": "e4f3",
+          "san": "exf3",
+          "explanation": "Black captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nxf3",
+          "explanation": "White captures while improving piece activity or clarifying the position."
+        }
+      ]
+    },
+    {
+      "id": "english-four-knights",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "English Opening",
+      "variation": "Four Knights Variation",
+      "eco": "A28",
+      "moves": [
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "f8b4",
+          "san": "Bb4",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e8g8",
+          "san": "O-O",
+          "explanation": "Black castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "english-reversed-sicilian",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "English Opening",
+      "variation": "Reversed Sicilian",
+      "eco": "A20",
+      "moves": [
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c4d5",
+          "san": "cxd5",
+          "explanation": "White captures to clarify the pawn structure and contest the center."
+        },
+        {
+          "uci": "f6d5",
+          "san": "Nxd5",
+          "explanation": "Black captures while improving piece activity or clarifying the position."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "english-botvinnik",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "English Opening",
+      "variation": "Botvinnik Setup",
+      "eco": "A26",
+      "moves": [
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "b1c3",
+          "san": "Nc3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "g7g6",
+          "san": "g6",
+          "explanation": "Black supports a kingside plan or challenges a piece."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8g7",
+          "san": "Bg7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e2e4",
+          "san": "e4",
+          "explanation": "Claim central space and open lines for the queen and king bishop."
+        },
+        {
+          "uci": "d7d6",
+          "san": "d6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1e2",
+          "san": "Nge2",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "reti-main",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "Réti Opening",
+      "variation": "Main Line",
+      "eco": "A09",
+      "moves": [
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c2c4",
+          "san": "c4",
+          "explanation": "Challenge the center from the flank."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8e7",
+          "san": "Be7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        }
+      ]
+    },
+    {
+      "id": "kings-indian-attack",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "King's Indian Attack",
+      "variation": "Main Setup",
+      "eco": "A07",
+      "moves": [
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g2g3",
+          "san": "g3",
+          "explanation": "Prepare a kingside fianchetto."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1g2",
+          "san": "Bg2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "e7e6",
+          "san": "e6",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "e1g1",
+          "san": "O-O",
+          "explanation": "White castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "f8e7",
+          "san": "Be7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "d2d3",
+          "san": "d3",
+          "explanation": "Reinforce the center and keep the position flexible."
+        },
+        {
+          "uci": "e8g8",
+          "san": "O-O",
+          "explanation": "Black castles to improve king safety and connect the rooks."
+        },
+        {
+          "uci": "b1d2",
+          "san": "Nbd2",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
+    },
+    {
+      "id": "bird-opening",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "Bird Opening",
+      "variation": "Main Line",
+      "eco": "A02",
+      "moves": [
+        {
+          "uci": "f2f4",
+          "san": "f4",
+          "explanation": "Support an aggressive kingside plan and contest e5."
+        },
+        {
+          "uci": "d7d5",
+          "san": "d5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e2e3",
+          "san": "e3",
+          "explanation": "Strengthen the center and open the dark-squared bishop."
+        },
+        {
+          "uci": "g7g6",
+          "san": "g6",
+          "explanation": "Black supports a kingside plan or challenges a piece."
+        },
+        {
+          "uci": "b2b3",
+          "san": "b3",
+          "explanation": "Prepare to fianchetto the queen bishop."
+        },
+        {
+          "uci": "f8g7",
+          "san": "Bg7",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "c1b2",
+          "san": "Bb2",
+          "explanation": "White develops the bishop to an active diagonal."
+        }
+      ]
+    },
+    {
+      "id": "nimzo-larsen",
+      "side": "w",
+      "category": "Flank Openings",
+      "opening": "Nimzo-Larsen Attack",
+      "variation": "Main Line",
+      "eco": "A01",
+      "moves": [
+        {
+          "uci": "b2b3",
+          "san": "b3",
+          "explanation": "Prepare to fianchetto the queen bishop."
+        },
+        {
+          "uci": "e7e5",
+          "san": "e5",
+          "explanation": "Black strengthens the position and follows the opening plan."
+        },
+        {
+          "uci": "c1b2",
+          "san": "Bb2",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "b8c6",
+          "san": "Nc6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "e2e3",
+          "san": "e3",
+          "explanation": "Strengthen the center and open the dark-squared bishop."
+        },
+        {
+          "uci": "g8f6",
+          "san": "Nf6",
+          "explanation": "Black develops or repositions a knight toward an active square."
+        },
+        {
+          "uci": "f1b5",
+          "san": "Bb5",
+          "explanation": "White develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "f8d6",
+          "san": "Bd6",
+          "explanation": "Black develops the bishop to an active diagonal."
+        },
+        {
+          "uci": "g1f3",
+          "san": "Nf3",
+          "explanation": "White develops or repositions a knight toward an active square."
+        }
+      ]
     }
   ]
 }

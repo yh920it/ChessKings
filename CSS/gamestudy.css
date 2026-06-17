@@ -36,7 +36,7 @@
 @media(max-width:600px){.study-controls{grid-template-columns:1fr 1fr;gap:8px;padding:10px}.study-controls .btn-gold{grid-column:1/-1}.study-board-area{width:100%;padding:12px 8px 20px}.board-actions{width:calc(var(--board-size) + 14px);grid-template-columns:repeat(4,1fr);}.board-actions button:nth-last-child(-n+2){grid-column:span 2}.study-panel{padding:14px 12px 24px}.study-title{font-size:18px}.analysis-grid{gap:10px}}
 
 /* Stockfish analysis */
-.engine-card{position:relative;overflow:hidden}
+.engine-card{position:relative;}
 .engine-card.is-analyzing::before{content:"";position:absolute;top:0;left:0;height:2px;width:42%;background:linear-gradient(90deg,transparent,var(--gold-bright),transparent);animation:engineScan 1.25s linear infinite}
 @keyframes engineScan{from{transform:translateX(-120%)}to{transform:translateX(340%)}}
 .engine-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}

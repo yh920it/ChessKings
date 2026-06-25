@@ -1,17 +1,50 @@
-const UNI = {
-  wK: "♚︎",
-  wQ: "♛︎",
-  wR: "♜︎",
-  wB: "♝︎",
-  wN: "♞︎",
-  wP: "♟︎",
-  bK: "♚︎",
-  bQ: "♛︎",
-  bR: "♜︎",
-  bB: "♝︎",
-  bN: "♞︎",
-  bP: "♟︎"
+const PIECE_IMAGES = {
+  wK: "Pieces/wK.png",
+  wQ: "Pieces/wQ.png",
+  wR: "Pieces/wR.png",
+  wB: "Pieces/wB.png",
+  wN: "Pieces/wN.png",
+  wP: "Pieces/wP.png",
+
+  bK: "Pieces/bK.png",
+  bQ: "Pieces/bQ.png",
+  bR: "Pieces/bR.png",
+  bB: "Pieces/bB.png",
+  bN: "Pieces/bN.png",
+  bP: "Pieces/bP.png"
 };
+
+function makePieceImage(piece) {
+  const pieceKey = piece.c + piece.t;
+  const image = document.createElement("img");
+
+  image.src = PIECE_IMAGES[pieceKey];
+  image.className = `piece piece-${piece.c}`;
+  image.alt =
+    `${piece.c === "w" ? "White" : "Black"} ${getPieceName(piece.t)}`;
+  image.draggable = false;
+
+  return image;
+}
+
+function getPieceName(type) {
+  const pieceNames = {
+    K: "King",
+    Q: "Queen",
+    R: "Rook",
+    B: "Bishop",
+    N: "Knight",
+    P: "Pawn"
+  };
+
+  return pieceNames[type] || "Piece";
+}
+function preloadPieceImages() {
+  Object.values(PIECE_IMAGES).forEach((source) => {
+    const image = new Image();
+    image.src = source;
+  });
+}
 const FILES='abcdefgh';
 let LESSONS=[];
 let board=[],turn='w',selected=null,legalTargets=[],lesson=null,ply=0,userSide='w',flipped=false,lastMove=null,wrongSquare=null,correctSquare=null,lessonActive=false;
@@ -35,7 +68,94 @@ function showFeedback(title,text,type){const c=document.getElementById('feedback
 function finishLesson(){lessonActive=false;updateProgress();document.getElementById('statusBar').textContent='Lesson complete';document.getElementById('completeText').textContent=`You completed ${lesson.opening}: ${lesson.variation}.`;document.getElementById('completeOverlay').classList.add('show')}
 function continueInGameStudy(){if(!lesson||ply<lesson.moves.length)return;const completedMoves=lesson.moves.slice(0,ply).map(m=>m.uci);const handoff={version:1,source:'Opening Academy',lessonId:lesson.id||null,opening:lesson.opening||'',variation:lesson.variation||'',eco:lesson.eco||'',userSide,completedMoves,completedSan:lesson.moves.slice(0,ply).map(m=>m.san),createdAt:new Date().toISOString()};try{sessionStorage.setItem('chessKingsStudyHandoff',JSON.stringify(handoff));window.location.href='gamestudy.html'}catch(error){console.error('Unable to continue in Game Study:',error);showFeedback('Unable to continue','The lesson position could not be transferred to Game Study.','bad')}}
 function render(){renderBoard();updateProgress();updatePlayerBars()}
-function renderBoard(){const el=document.getElementById('board');el.innerHTML='';let hintFrom=null,hintTo=null;if(lessonActive&&lesson&&ply<lesson.moves.length){const expected=lesson.moves[ply].uci,[fr,fc]=sqToRC(expected.slice(0,2));if(board[fr][fc]?.c===userSide){hintFrom=[fr,fc];hintTo=sqToRC(expected.slice(2,4))}}for(let row=0;row<8;row++)for(let col=0;col<8;col++){const r=flipped?7-row:row,c=flipped?7-col:col,sq=document.createElement('div');sq.className='sq '+((r+c)%2===0?'light':'dark');if(lastMove){if(r===lastMove.from[0]&&c===lastMove.from[1])sq.classList.add('last-from');if(r===lastMove.to[0]&&c===lastMove.to[1])sq.classList.add('last-to')}if(hintFrom&&r===hintFrom[0]&&c===hintFrom[1])sq.classList.add('hint-source');if(hintTo&&r===hintTo[0]&&c===hintTo[1])sq.classList.add('hint-target');if(wrongSquare&&r===wrongSquare[0]&&c===wrongSquare[1])sq.classList.add('wrong');if(correctSquare&&r===correctSquare[0]&&c===correctSquare[1])sq.classList.add('correct');const p=board[r][c];if(p){const pe=document.createElement('div');pe.className='piece '+p.c;pe.textContent=UNI[p.c+p.t];sq.appendChild(pe)}sq.addEventListener('click',()=>onSquareClick(r,c));el.appendChild(sq)}}
+function renderBoard() {
+  const el = document.getElementById("board");
+  el.innerHTML = "";
+
+  let hintFrom = null;
+  let hintTo = null;
+
+  if (lessonActive && lesson && ply < lesson.moves.length) {
+    const expected = lesson.moves[ply].uci;
+    const [fr, fc] = sqToRC(expected.slice(0, 2));
+
+    if (board[fr][fc]?.c === userSide) {
+      hintFrom = [fr, fc];
+      hintTo = sqToRC(expected.slice(2, 4));
+    }
+  }
+
+  for (let row = 0; row < 8; row++) {
+    for (let col = 0; col < 8; col++) {
+      const r = flipped ? 7 - row : row;
+      const c = flipped ? 7 - col : col;
+      const sq = document.createElement("div");
+
+      sq.className =
+        "sq " + ((r + c) % 2 === 0 ? "light" : "dark");
+
+      if (lastMove) {
+        if (
+          r === lastMove.from[0] &&
+          c === lastMove.from[1]
+        ) {
+          sq.classList.add("last-from");
+        }
+
+        if (
+          r === lastMove.to[0] &&
+          c === lastMove.to[1]
+        ) {
+          sq.classList.add("last-to");
+        }
+      }
+
+      if (
+        hintFrom &&
+        r === hintFrom[0] &&
+        c === hintFrom[1]
+      ) {
+        sq.classList.add("hint-source");
+      }
+
+      if (
+        hintTo &&
+        r === hintTo[0] &&
+        c === hintTo[1]
+      ) {
+        sq.classList.add("hint-target");
+      }
+
+      if (
+        wrongSquare &&
+        r === wrongSquare[0] &&
+        c === wrongSquare[1]
+      ) {
+        sq.classList.add("wrong");
+      }
+
+      if (
+        correctSquare &&
+        r === correctSquare[0] &&
+        c === correctSquare[1]
+      ) {
+        sq.classList.add("correct");
+      }
+
+      const piece = board[r][c];
+
+      if (piece) {
+        sq.appendChild(makePieceImage(piece));
+      }
+
+      sq.addEventListener("click", () => {
+        onSquareClick(r, c);
+      });
+
+      el.appendChild(sq);
+    }
+  }
+}
 function renderLabels(){const ranks=flipped?'12345678':'87654321',files=flipped?'hgfedcba':'abcdefgh';document.getElementById('rankNums').innerHTML=[...ranks].map(x=>`<span>${x}</span>`).join('');document.getElementById('fileLetters').innerHTML=[...files].map(x=>`<span>${x}</span>`).join('')}
 function updatePlayerBars(){const userWhite=userSide==='w';document.getElementById('bottomName').textContent='You';document.getElementById('bottomRole').textContent=userWhite?'White':'Black';document.getElementById('bottomAvatar').textContent=userWhite?'♙':'♟';document.getElementById('topName').textContent='Trainer';document.getElementById('topRole').textContent=userWhite?'Black follows the lesson line':'White follows the lesson line';document.getElementById('topAvatar').textContent=userWhite?'♟':'♙';document.getElementById('bottomDot').className='p-dot '+(lessonActive&&turn===userSide?'active':'');document.getElementById('topDot').className='p-dot '+(lessonActive&&turn!==userSide?'active':'')}
 async function loadLessonData() {
@@ -89,4 +209,5 @@ async function loadLessonData() {
   }
 }
 document.getElementById('sideSelect').addEventListener('change',populateOpenings);document.getElementById('openingSelect').addEventListener('change',populateVariations);document.getElementById('variationSelect').addEventListener('change',previewLesson);document.getElementById('startLessonBtn').addEventListener('click',startLesson);document.getElementById('repeatLessonBtn').addEventListener('click',startLesson);document.getElementById('continueStudyBtn').addEventListener('click',continueInGameStudy);
+preloadPieceImages();
 board=startBoard();renderLabels();renderBoard();updateProgress();document.getElementById('startLessonBtn').disabled=true;loadLessonData();

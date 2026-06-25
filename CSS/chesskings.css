@@ -2,7 +2,7 @@
 :root{
   --bg:#060604;--panel:#0c0c0a;--panel2:#121210;--panel3:#1a1a16;
   --gold:#d4af37;--gold-bright:#f0c94a;--gold-dim:#8b7536;--gold-dark:#251e08;
-  --gold-line:#3a2f0c;--sq-light:#c9a84c;--sq-dark:#1c1508;
+  --gold-line:#3a2f0c;--sq-light:#ffffff;--sq-dark:#1c1507;
   --text:#e8d5a3;--text-dim:#9a8964;--text-muted:#5d5034;
   --good:#63d682;--bad:#ef6c63;--info:#69aef8;--sq-size:64px;--board-size:calc(var(--sq-size)*8)
 }

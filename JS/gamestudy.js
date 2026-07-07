@@ -1,10 +1,33 @@
 (() => {
   "use strict";
 
-  const PIECES = {
-    wk: "♚︎", wq: "♛︎", wr: "♜︎", wb: "♝︎", wn: "♞︎", wp: "♟︎",
-    bk: "♚︎", bq: "♛︎", br: "♜︎", bb: "♝︎", bn: "♞︎", bp: "♟︎"
+  const PIECE_IMAGES = {
+    wk: "Pieces/wK.png",
+    wq: "Pieces/wQ.png",
+    wr: "Pieces/wR.png",
+    wb: "Pieces/wB.png",
+    wn: "Pieces/wN.png",
+    wp: "Pieces/wP.png",
+
+    bk: "Pieces/bK.png",
+    bq: "Pieces/bQ.png",
+    br: "Pieces/bR.png",
+    bb: "Pieces/bB.png",
+    bn: "Pieces/bN.png",
+    bp: "Pieces/bP.png"
   };
+
+  function makePieceImage(piece) {
+    const pieceKey = piece.color + piece.type;
+    const image = document.createElement("img");
+
+    image.src = PIECE_IMAGES[pieceKey];
+    image.className = `piece piece-${piece.color}`;
+    image.alt = `${piece.color === "w" ? "White" : "Black"} ${piece.type}`;
+    image.draggable = false;
+
+    return image;
+  }
 
   const MODE_LABELS = {
     guided: "Guided Play",
@@ -442,10 +465,7 @@
 
         const piece = board[row][col];
         if (piece) {
-          const pieceEl = document.createElement("span");
-          pieceEl.className = `piece ${piece.color}`;
-          pieceEl.textContent = PIECES[piece.color + piece.type];
-          square.appendChild(pieceEl);
+          square.appendChild(makePieceImage(piece));
         }
 
         square.addEventListener("click", () => handleSquareClick(squareName));

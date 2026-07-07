@@ -4,7 +4,7 @@
   --gold:#d4af37;--gold-bright:#f0c94a;--gold-dim:#8b7536;--gold-dark:#251e08;
   --gold-line:#3a2f0c;--sq-light:#ffffff;--sq-dark:#1c1507;
   --text:#e8d5a3;--text-dim:#9a8964;--text-muted:#5d5034;
-  --good:#63d682;--bad:#ef6c63;--info:#69aef8;--sq-size:64px;--board-size:calc(var(--sq-size)*8)
+  --good:#63d682;--bad:#ef6c63;--info:#69aef8;--sq-size:75px;--board-size:calc(var(--sq-size)*8)
 }
 html,body{width:100%;min-height:100%}
 body{background:radial-gradient(ellipse at 50% 45%,#151106 0%,#060604 68%);color:var(--text);font-family:'Crimson Pro',Georgia,serif;min-height:100vh}
